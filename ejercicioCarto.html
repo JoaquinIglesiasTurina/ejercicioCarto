@@ -1,0 +1,1641 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-04-21 dom 13:21 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="joaquin" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgf5981e3">1. download data</a></li>
+<li><a href="#orgb27ac47">2. exploratory data analysis</a>
+<ul>
+<li><a href="#org508f76b">2.1. cleaning data</a></li>
+<li><a href="#org233f070">2.2. more feature extraction</a>
+<ul>
+<li><a href="#org626548b">2.2.1. whats going on with tips greater than the fare amount?</a></li>
+</ul>
+</li>
+<li><a href="#orgb16466c">2.3. visualizations</a></li>
+<li><a href="#org2478b11">2.4. spatial visualizations</a></li>
+</ul>
+</li>
+<li><a href="#orgfb80d3f">3. modelling tips</a>
+<ul>
+<li><a href="#orgb4d522d">3.1. a note on accuracy metrics</a></li>
+<li><a href="#org1acfd89">3.2. linear models</a></li>
+<li><a href="#orge15e809">3.3. random forest</a></li>
+<li><a href="#orga90ddc5">3.4. choosing a model</a></li>
+<li><a href="#org1cbc718">3.5. how to implement as an API</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgf5981e3" class="outline-2">
+<h2 id="orgf5981e3"><span class="section-number-2">1</span> download data</h2>
+<div class="outline-text-2" id="text-1">
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"tidyverse"</span>)
+<span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"RCurl"</span>)
+<span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"readr"</span>)
+baseUrl <span style="color: #70c0b1;">&lt;-</span> <span style="color: #b9ca4a;">"https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_"</span>
+requiredMonths <span style="color: #70c0b1;">&lt;-</span> c(<span style="color: #b9ca4a;">"2017-03"</span>, <span style="color: #b9ca4a;">"2017-06"</span>, <span style="color: #b9ca4a;">"2017-12"</span>)
+fullUrls <span style="color: #70c0b1;">&lt;-</span> map(requiredMonths, <span style="color: #c397d8;">function</span>(x) paste(baseUrl, x, <span style="color: #b9ca4a;">".csv"</span>, sep=<span style="color: #b9ca4a;">""</span>))
+data <span style="color: #70c0b1;">&lt;-</span> fullUrls  <span style="color: #70c0b1;">%&gt;%</span>
+    map(
+        <span style="color: #c397d8;">function</span>(x) x <span style="color: #70c0b1;">%&gt;%</span> read_csv <span style="color: #70c0b1;">%&gt;%</span> 
+                    mutate(
+                        rideTime = as.numeric(
+                            tpep_dropoff_datetime - tpep_pickup_datetime) / 120) <span style="color: #70c0b1;">%&gt;%</span>
+                    filter(rideTime &gt; 0) <span style="color: #70c0b1;">%&gt;%</span>
+                    filter(rideTime &lt; 24) <span style="color: #70c0b1;">%&gt;%</span>
+                    filter(fare_amount &gt;= 2.5) <span style="color: #70c0b1;">%&gt;%</span>
+                    filter(tip_amount &gt; 0) <span style="color: #70c0b1;">%&gt;%</span>
+                    filter(tip_amount &lt; 100) <span style="color: #70c0b1;">%&gt;%</span>
+                    filter(extra &gt; 0))
+
+data <span style="color: #70c0b1;">%&gt;%</span> reduce(<span style="color: #c397d8;">function</span>(x, y) rbind(x, y)) <span style="color: #70c0b1;">%&gt;%</span> saveRDS(<span style="color: #b9ca4a;">"taxiData.rds"</span>)
+<span style="color: #969896; font-style: italic;"># </span><span style="color: #969896; font-style: italic;">data %&gt;% saveRDS("taxiData.rds")</span>
+</pre>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgb27ac47" class="outline-2">
+<h2 id="orgb27ac47"><span class="section-number-2">2</span> exploratory data analysis</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org508f76b" class="outline-3">
+<h3 id="org508f76b"><span class="section-number-3">2.1</span> cleaning data</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+there are some strange things in the data. these strange cases will be removed.
+it would be <i>more correct</i> to leave them as missing values and make some mean
+imputations, but given that
+</p>
+<ul class="org-ul">
+<li>i am running this in my machine with 8 gigs of ram,</li>
+<li>we have sufficient data anyways:</li>
+</ul>
+<p>
+i belive it is wiser to throw away these kind of obvservations where numbers just dont
+make sense.
+</p>
+
+<p>
+in the next code snippet we will study these fascinating strange cases
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"tidyverse"</span>)
+<span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"RCurl"</span>)
+<span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"ggplot2"</span>)
+
+data <span style="color: #70c0b1;">&lt;-</span> readRDS(<span style="color: #b9ca4a;">"taxiData.rds"</span>)
+
+data1 <span style="color: #70c0b1;">&lt;-</span> data[[1]] <span style="color: #70c0b1;">%&gt;%</span>
+    mutate(rideTime = as.numeric(tpep_dropoff_datetime - tpep_pickup_datetime) / 120) <span style="color: #70c0b1;">%&gt;%</span>
+    filter(rideTime &gt; 0) <span style="color: #70c0b1;">%&gt;%</span>
+    filter(rideTime &lt; 24) <span style="color: #70c0b1;">%&gt;%</span>
+    filter(fare_amount &gt;= 2.5) <span style="color: #70c0b1;">%&gt;%</span>
+    filter(tip_amount &gt; 0) <span style="color: #70c0b1;">%&gt;%</span>
+    filter(tip_amount &lt; 100) <span style="color: #70c0b1;">%&gt;%</span>
+    filter(extra &gt; 0)
+
+
+data1 <span style="color: #70c0b1;">%&gt;%</span> summary <span style="color: #70c0b1;">%&gt;%</span> print
+
+data1 <span style="color: #70c0b1;">%&gt;%</span> saveRDS(<span style="color: #b9ca4a;">"taxiDataClean.rds"</span>)
+
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">OUTCOMENTED CHECKS AND EVALUATIONS OF DATA.</span>
+<span style="color: #969896; font-style: italic;"># </span><span style="color: #969896; font-style: italic;">checking cases were dropoff earlier than pickup</span>
+<span style="color: #969896; font-style: italic;">#</span><span style="color: #969896; font-style: italic;">data1 %&gt;% filter(rideTime &lt; 0)</span>
+
+<span style="color: #969896; font-style: italic;"># </span><span style="color: #969896; font-style: italic;">checking cases were negative fare amount</span>
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">data1 %&gt;% filter(fare_amount &lt; 0) %&gt;% select(fare_amount) %&gt;% summary</span>
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">data1 %&gt;% select(fare_amount) %&gt;% summary</span>
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">data1$months &lt;- data1$tpep_dropoff_datetime %&gt;% map(year)</span>
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">plotNoFareData = data1 %&gt;% filter(fare_amount &lt; 0)</span>
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">plotNoFareData %&gt;% summary</span>
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">ggplot(data = plotNoFareData, aes(x = fare_amount)) + geom_histogram()</span>
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">ggplot(data = plotNoFareData, aes(x = tip_amount)) + geom_histogram()</span>
+
+<span style="color: #969896; font-style: italic;"># </span><span style="color: #969896; font-style: italic;">checking cases with negative tip_amount</span>
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">ggplot(data = data1, aes(x = tip_amount)) + geom_histogram(bins = 100)</span>
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">data1 %&gt;% filter(tip_amount &lt;= 0) %&gt;% summary</span>
+
+<span style="color: #969896; font-style: italic;"># </span><span style="color: #969896; font-style: italic;">checking cases with negative extra</span>
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">data1 %&gt;% filter(extra &lt; 0) %&gt;% summary</span>
+</pre>
+</div>
+<p>
+i will probably comment out all the checks, so you can see that i have put the effort
+and studied the situation so i can understand whats going on. but here i write my
+thought process
+</p>
+
+<p>
+to begin with, there are two cases were the pickup time is later than the dropoff time
+this makes no sense, obvservations are out.
+</p>
+
+<p>
+there is another case were the fares are negative, again, how can this be? there is usually
+a minimum charge in taxis. we need to look up <a href="https://www1.nyc.gov/site/tlc/passengers/taxi-fare.page">here</a> what
+is the initial charge on new york taxis: $2.50 at the time of writing.
+<a href="https://nymag.com/nymetro/urban/features/taxi/n_20286/">this pice of news</a> states that the $2.50 inital chanrge was stablished in 2005, so we can
+apply this filter to all our required data!
+</p>
+
+<p>
+furhtermore, all these cases have negative taxes, as well as negative tips. from a business
+sense, we do not want our customers to give negative tips. One last noticeable point here
+is that all <i>trip_distance</i> entries here are less than a mile, but there was a 718 hour long
+ride! these cases are strange and few, we throw them away.
+</p>
+
+<p>
+after all this cleaning, data looks much better, but we still have negatives in <i>tip_amount</i>,
+<i>extra</i> and <i>tolls_amount</i>.
+</p>
+
+<p>
+looking at <i>tip_amount</i>, we also see that there are lots of $0 tips. these do not look good
+for several reasons:
+</p>
+<ul class="org-ul">
+<li>as far as i am concerned, tipping is <i>kinda</i> required in the US</li>
+<li>we want our customers to tip, so maybe we need to forego these obvservatios, as they only
+reduce the mean tip, and including them would yield lower predictions.</li>
+</ul>
+<p>
+so, for our first model, i am going to throw away $0 or lower tips from the data. time
+allowing, i might do another run including them. but after these removal we only have
+strange negatives in <i>extra</i>, and there are not that many cases.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org233f070" class="outline-3">
+<h3 id="org233f070"><span class="section-number-3">2.2</span> more feature extraction</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+when dealing with dates, there is a chance that there are differnces in our data
+at different time slots. we would not expect the same behavior from people
+monday at 8 am than saturday at 7 pm. thus it might be interesting to compute
+a couple of time variables, like weekday or hour.
+</p>
+
+<p>
+it would be also interesting to look at the tip over fare ratio, see how much
+relative to the total fare people are tipping. 
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"tidyverse"</span>)
+<span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"ggplot2"</span>)
+<span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"lubridate"</span>)
+
+data <span style="color: #70c0b1;">&lt;-</span> readRDS(<span style="color: #b9ca4a;">"taxiData.rds"</span>)
+
+<span style="color: #7aa6da;">hourToPeriod</span> <span style="color: #70c0b1;">&lt;-</span> <span style="color: #c397d8;">function</span>(integer) {
+    <span style="color: #c397d8;">if</span> (integer &gt;= 0 &amp; integer &lt; 6) <span style="color: #b9ca4a;">"early morning"</span>
+    <span style="color: #c397d8;">else</span> <span style="color: #c397d8;">if</span> (integer &gt;= 6 &amp; integer &lt; 12) <span style="color: #b9ca4a;">"morning"</span>
+    <span style="color: #c397d8;">else</span> <span style="color: #c397d8;">if</span> (integer &gt;= 12 &amp; integer &lt; 19) <span style="color: #b9ca4a;">"afternoon"</span>
+    <span style="color: #c397d8;">else</span> <span style="color: #c397d8;">if</span> (integer &gt;= 19 &amp; integer &lt;= 23) <span style="color: #b9ca4a;">"night"</span>
+    <span style="color: #c397d8;">else</span> <span style="color: #b9ca4a;">"None"</span>
+}
+
+data <span style="color: #70c0b1;">&lt;-</span> data <span style="color: #70c0b1;">%&gt;%</span> mutate(month = month(tpep_pickup_datetime),
+                weekDay = weekdays(tpep_pickup_datetime),
+                hour = hour(tpep_pickup_datetime)) <span style="color: #70c0b1;">%&gt;%</span>
+    mutate(dayPeriod = hour <span style="color: #70c0b1;">%&gt;%</span> sapply(hourToPeriod, simplify = <span style="color: #e7c547;">TRUE</span>) <span style="color: #70c0b1;">%&gt;%</span> unlist) <span style="color: #70c0b1;">%&gt;%</span>
+    mutate(relativeTip = tip_amount / fare_amount)
+
+data <span style="color: #70c0b1;">%&gt;%</span> saveRDS(<span style="color: #b9ca4a;">"taxiDataFeatures.rds"</span>)
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">data %&gt;% select(relativeTip) %&gt;% summary</span>
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">data %&gt;% filter(relativeTip &gt; 1) %&gt;% select(relativeTip) %&gt;% nrow</span>
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">data %&gt;% filter(relativeTip &gt; 1) %&gt;% select(fare_amount, tip_amount, relativeTip) %&gt;% summary</span>
+
+
+</pre>
+</div>
+
+<p>
+after computing the tip to fare ratio, seems like we still need to do some extra cleaning.
+some people are tipping more than they are paying for the ride. this needs extra consideration.
+</p>
+</div>
+
+
+<div id="outline-container-org626548b" class="outline-4">
+<h4 id="org626548b"><span class="section-number-4">2.2.1</span> whats going on with tips greater than the fare amount?</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"tidyverse"</span>)
+<span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"ggplot2"</span>)
+<span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"lubridate"</span>)
+
+data <span style="color: #70c0b1;">&lt;-</span> readRDS(<span style="color: #b9ca4a;">"taxiDataFeatures.rds"</span>) <span style="color: #70c0b1;">%&gt;%</span>
+    select(tip_amount, fare_amount, relativeTip)
+
+data <span style="color: #70c0b1;">&lt;-</span> data <span style="color: #70c0b1;">%&gt;%</span> mutate(generous = relativeTip <span style="color: #70c0b1;">%&gt;%</span>
+                            sapply(<span style="color: #c397d8;">function</span>(x) {
+                                <span style="color: #c397d8;">if</span> (x &gt; 1) <span style="color: #b9ca4a;">"generous"</span>
+                                <span style="color: #c397d8;">else</span> <span style="color: #b9ca4a;">"standard"</span>
+                            }))
+
+plotsFolder <span style="color: #70c0b1;">&lt;-</span> <span style="color: #b9ca4a;">"plots"</span>
+
+logTipHist <span style="color: #70c0b1;">&lt;-</span> ggplot(data = data, aes(x = log(tip_amount))) +
+    geom_histogram(bins = 100)
+
+ggsave(paste(plotsFolder, <span style="color: #b9ca4a;">"logTipHist.jpg"</span>, sep = <span style="color: #b9ca4a;">"/"</span>), logTipHist)
+
+logTipGenerousHist <span style="color: #70c0b1;">&lt;-</span> ggplot(data = data, aes(x = log(tip_amount),
+                                              fill=generous)) +
+    geom_histogram(bins = 100, alpha = 0.2, position = <span style="color: #b9ca4a;">"identity"</span>)
+
+ggsave(paste(plotsFolder, <span style="color: #b9ca4a;">"logTipGenerousHist.jpg"</span>, sep = <span style="color: #b9ca4a;">"/"</span>), logTipGenerousHist)
+
+logTipGenerousHist <span style="color: #70c0b1;">&lt;-</span> ggplot(data = data, aes(x = log(tip_amount), y = stat(density),
+                                              fill=generous)) +
+    geom_histogram(bins = 100, alpha = 0.2, position = <span style="color: #b9ca4a;">"identity"</span>)
+
+ggsave(paste(plotsFolder, <span style="color: #b9ca4a;">"logTipGenerousFrequencyHist.jpg"</span>, sep = <span style="color: #b9ca4a;">"/"</span>), logTipGenerousHist)
+
+<span style="color: #969896; font-style: italic;"># </span><span style="color: #969896; font-style: italic;">data %&gt;% transmute(logTipAmount = log(tip_amount)) %&gt;% summary</span>
+</pre>
+</div>
+<p>
+first thing we want to take a look at is the tip distribution, we will look
+at it in the log scale, as it will approximate a normal distribution.
+</p>
+
+
+<div id="orgad2e159" class="figure">
+<p><img src="./plots/logTipHist.jpg" alt="logTipHist.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Log-tip histogram</p>
+</div>
+
+<p>
+approximation of a normal might be over stated, but it does not look to bad.
+strong peaks at 0 (tip of $1) and below 1.5, roughly arround the mean,
+(tip of about $2) make perfect sense. There is a long tail on the negative
+side, these are people that are tipping too little. probably they need to
+be treated too.
+</p>
+
+<p>
+next, we look at the same distribution, but color coding if the tip was
+larger than the actual fare in red (generous tip), and blue otherwise
+(standard tip)
+</p>
+
+
+<div id="org15b6b1e" class="figure">
+<p><img src="./plots/logTipGenerousHist.jpg" alt="logTipGenerousHist.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 2: </span>Log-tip histogram by class of tip</p>
+</div>
+
+<p>
+we see no noticiable behaviour on this scale, which means that generous tips are
+rather rare. so we probably need to look at the densities rahter than counts.
+</p>
+
+
+<div id="org38d2424" class="figure">
+<p><img src="./plots/logTipGenerousFrequencyHist.jpg" alt="logTipGenerousFrequencyHist.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 3: </span>Log-tip density histogram by class of tip</p>
+</div>
+
+<p>
+this looks interesting, the blue distribution looks similar to the first plot,
+but generous tips have a higher mean and standard distribution than standard
+tips.
+</p>
+
+<p>
+in order to have a better understanding of the data, and figure out what to do
+with these obvservations, we will compare them with the fee amount.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"tidyverse"</span>)
+<span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"ggplot2"</span>)
+<span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"lubridate"</span>)
+
+data <span style="color: #70c0b1;">&lt;-</span> readRDS(<span style="color: #b9ca4a;">"taxiDataFeatures.rds"</span>) <span style="color: #70c0b1;">%&gt;%</span>
+    select(tip_amount, fare_amount, relativeTip)
+
+data <span style="color: #70c0b1;">&lt;-</span> data <span style="color: #70c0b1;">%&gt;%</span> mutate(generous = relativeTip <span style="color: #70c0b1;">%&gt;%</span>
+                            sapply(<span style="color: #c397d8;">function</span>(x) {
+                                <span style="color: #c397d8;">if</span> (x &gt; 1) <span style="color: #b9ca4a;">"generous"</span>
+                                <span style="color: #c397d8;">else</span> <span style="color: #b9ca4a;">"standard"</span>
+                            }))
+
+plotsFolder <span style="color: #70c0b1;">&lt;-</span> <span style="color: #b9ca4a;">"plots"</span>
+fareTipPlot <span style="color: #70c0b1;">&lt;-</span> ggplot(data = data, aes(x = fare_amount, y = tip_amount,
+                                       color = generous)) +
+    geom_point()
+
+ggsave(paste(plotsFolder, <span style="color: #b9ca4a;">"fareTipPlot.jpg"</span>, sep = <span style="color: #b9ca4a;">"/"</span>),  fareTipPlot)
+
+
+logFareTipPlot <span style="color: #70c0b1;">&lt;-</span> ggplot(data = data, aes(x = log(fare_amount), y = log(tip_amount),
+                                       color = generous)) +
+    geom_point()
+
+ggsave(paste(plotsFolder, <span style="color: #b9ca4a;">"logFareTipPlot.jpg"</span>, sep = <span style="color: #b9ca4a;">"/"</span>),  logFareTipPlot)
+
+fareTipStandardPlot <span style="color: #70c0b1;">&lt;-</span> ggplot(data = data <span style="color: #70c0b1;">%&gt;%</span> filter(generous == <span style="color: #b9ca4a;">"standard"</span>),
+                      aes(x = log(fare_amount), y = log(tip_amount))) +
+    geom_point()
+
+ggsave(paste(plotsFolder, <span style="color: #b9ca4a;">"logFareTipStandardPlot.jpg"</span>, sep = <span style="color: #b9ca4a;">"/"</span>),  fareTipStandardPlot)
+
+fareTip100Plot <span style="color: #70c0b1;">&lt;-</span> ggplot(data = data <span style="color: #70c0b1;">%&gt;%</span> filter(tip_amount &lt; 100),
+                      aes(x = log(fare_amount), y = log(tip_amount))) +
+    geom_point()
+
+ggsave(paste(plotsFolder, <span style="color: #b9ca4a;">"logFareTip100Plot.jpg"</span>, sep = <span style="color: #b9ca4a;">"/"</span>),  fareTip100Plot)
+</pre>
+</div>
+
+<div id="orgc4cfda7" class="figure">
+<p><img src="./plots/fareTipPlot.jpg" alt="fareTipPlot.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 4: </span>fare vs tip scatterplot</p>
+</div>
+
+<p>
+in this plot we can notice that tips of over $100 tend to be clustered
+under $50 fares. filtering out tips over $100 might be a good compromise
+solution to clean the <i>tip_amount</i> variable. filtering tips of over $200
+might be a better choice, but once again, i am taking into consideration
+hardware restrictions.
+</p>
+
+
+<div id="org0d21a52" class="figure">
+<p><img src="./plots/logFareTipPlot.jpg" alt="logFareTipPlot.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 5: </span>log-fare vs log-tip scatterplot</p>
+</div>
+
+<p>
+in the log scale, there is a clearer positive correlation betweem the two
+variables.
+</p>
+
+<p>
+the next two plots display the scatterplot of log tip vs log fares under two
+filter approaches: 1) removing all tips greater than the fares, 2) removing
+tips over $100. The latter approach seems more sensible, as it mantains better
+the original distribution of the data. but maybe this is a none issue. 
+</p>
+
+
+<div id="org31af92d" class="figure">
+<p><img src="./plots/logFareTipStandardPlot.jpg" alt="logFareTipStandardPlot.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 6: </span>Log-tip density histogram by class of tip</p>
+</div>
+
+
+<div id="org8c3b3bd" class="figure">
+<p><img src="./plots/logFareTip100Plot.jpg" alt="logFareTip100Plot.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 7: </span>Log-tip density histogram by class of tip</p>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgb16466c" class="outline-3">
+<h3 id="orgb16466c"><span class="section-number-3">2.3</span> visualizations</h3>
+<div class="outline-text-3" id="text-2-3">
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"tidyverse"</span>)
+<span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"ggplot2"</span>)
+
+workDays <span style="color: #70c0b1;">&lt;-</span> c(<span style="color: #b9ca4a;">"jueves"</span>, <span style="color: #b9ca4a;">"mi&#233;rcoles"</span>, <span style="color: #b9ca4a;">"viernes"</span>, <span style="color: #b9ca4a;">"lunes"</span>, <span style="color: #b9ca4a;">"martes"</span>)
+weekEnd <span style="color: #70c0b1;">&lt;-</span> c(<span style="color: #b9ca4a;">"domingo"</span>, <span style="color: #b9ca4a;">"s&#225;bado"</span>)
+plotsFolder <span style="color: #70c0b1;">&lt;-</span> <span style="color: #b9ca4a;">"plots"</span>
+data <span style="color: #70c0b1;">&lt;-</span> readRDS(<span style="color: #b9ca4a;">"taxiDataFeatures.rds"</span>) <span style="color: #70c0b1;">%&gt;%</span>
+    filter(tip_amount &lt; 100) <span style="color: #70c0b1;">%&gt;%</span> 
+    mutate(generous = relativeTip <span style="color: #70c0b1;">%&gt;%</span>
+               sapply(<span style="color: #c397d8;">function</span>(x) {
+                   <span style="color: #c397d8;">if</span> (x &gt; 1) <span style="color: #b9ca4a;">"generous"</span>
+                   <span style="color: #c397d8;">else</span> <span style="color: #b9ca4a;">"standard"</span>
+               })) <span style="color: #70c0b1;">%&gt;%</span>
+    mutate(weekEnd = weekDay <span style="color: #70c0b1;">%&gt;%</span>
+           sapply(<span style="color: #c397d8;">function</span>(x)
+                  <span style="color: #c397d8;">if</span> (x <span style="color: #70c0b1;">%in%</span> workDays) <span style="color: #b9ca4a;">"workDay"</span>
+                  <span style="color: #c397d8;">else</span> <span style="color: #c397d8;">if</span> (x <span style="color: #70c0b1;">%in%</span> weekEnd) <span style="color: #b9ca4a;">"weekEnd"</span>
+                  <span style="color: #c397d8;">else</span> <span style="color: #b9ca4a;">"badDay"</span>)) <span style="color: #70c0b1;">%&gt;%</span>
+    mutate(tollPaid = tolls_amount <span style="color: #70c0b1;">%&gt;%</span>
+               sapply(<span style="color: #c397d8;">function</span>(x)
+                      <span style="color: #c397d8;">if</span> (x == 0) <span style="color: #b9ca4a;">"noToll"</span>
+                      <span style="color: #c397d8;">else</span> <span style="color: #c397d8;">if</span>(x &gt; 0) <span style="color: #b9ca4a;">"tollPaid"</span>
+                      <span style="color: #c397d8;">else</span> <span style="color: #b9ca4a;">"badToll"</span>))
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">data %&gt;% saveRDS("taxiDataFinal.rds")</span>
+data <span style="color: #70c0b1;">%&gt;%</span> colnames
+passengerTipBox <span style="color: #70c0b1;">&lt;-</span> ggplot(data = data,
+       aes(x = as.factor(passenger_count), y = log(tip_amount),
+           group = passenger_count)) +
+    geom_boxplot()
+ggsave(paste(plotsFolder, <span style="color: #b9ca4a;">"passengerTipBox.jpg"</span>, sep = <span style="color: #b9ca4a;">"/"</span>),  passengerTipBox)
+
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">weekendTipHist &lt;- ggplot(data = data, aes(log(tip_amount), fill = weekEnd)) +</span>
+<span style="color: #969896; font-style: italic;">##     </span><span style="color: #969896; font-style: italic;">geom_histogram(bins = 100, position = "identity", alpha = 0.2)</span>
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">ggsave(paste(plotsFolder, "weekendTipHist.jpg", sep = "/"),  weekendTipHist)</span>
+
+weekendTipDensityHist <span style="color: #70c0b1;">&lt;-</span> ggplot(data = data, aes(x = log(tip_amount),
+                                                 y = stat(density), fill = weekEnd)) +
+    geom_histogram(bins = 100, position = <span style="color: #b9ca4a;">"identity"</span>, alpha = 0.2)
+ggsave(paste(plotsFolder, <span style="color: #b9ca4a;">"weekendTipDensityHist.jpg"</span>, sep = <span style="color: #b9ca4a;">"/"</span>),  weekendTipDensityHist)
+
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">dayPeriodTipHist &lt;- ggplot(data = data, aes(log(tip_amount), fill = dayPeriod)) +</span>
+<span style="color: #969896; font-style: italic;">##     </span><span style="color: #969896; font-style: italic;">geom_histogram(bins = 100, position = "identity", alpha = 0.2)</span>
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">dayPeriodTipHist</span>
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">ggsave(paste(plotsFolder, "dayPeriodTipHist.jpg", sep = "/"),  weekendTipHistp)</span>
+
+dayPeriodTipDensityHist <span style="color: #70c0b1;">&lt;-</span> ggplot(data = data, aes(x = log(tip_amount),
+                                                   y = stat(density), fill = dayPeriod)) +
+    geom_histogram(bins = 100, position = <span style="color: #b9ca4a;">"identity"</span>, alpha = 0.2)
+ggsave(paste(plotsFolder, <span style="color: #b9ca4a;">"dayPeriodTipDensityHist.jpg"</span>, sep = <span style="color: #b9ca4a;">"/"</span>),  dayPeriodTipDensityHist)
+
+paymentTipDensityHist <span style="color: #70c0b1;">&lt;-</span> ggplot(data = data, aes(x = log(tip_amount),
+                        y = stat(density), fill = as.factor(payment_type))) +
+    geom_histogram(bins = 100, position = <span style="color: #b9ca4a;">"identity"</span>, alpha = 0.2)
+ggsave(paste(plotsFolder, <span style="color: #b9ca4a;">"paymentTipDensityHist.jpg"</span>, sep = <span style="color: #b9ca4a;">"/"</span>),  paymentTipDensityHist)
+
+storeCodeTipDensityHist <span style="color: #70c0b1;">&lt;-</span> ggplot(data = data, aes(x = log(tip_amount),
+                        y = stat(density), fill = as.factor(store_and_fwd_flag))) +
+    geom_histogram(bins = 100, position = <span style="color: #b9ca4a;">"identity"</span>, alpha = 0.2)
+ggsave(paste(plotsFolder, <span style="color: #b9ca4a;">"storeCodeTipDensityHist.jpg"</span>, sep = <span style="color: #b9ca4a;">"/"</span>), storeCodeTipDensityHist)
+
+rateCodeTipDensityHist <span style="color: #70c0b1;">&lt;-</span> ggplot(data = data, aes(x = log(tip_amount),
+                        y = stat(density), fill = as.factor(RatecodeID))) +
+    geom_histogram(bins = 100, position = <span style="color: #b9ca4a;">"identity"</span>, alpha = 0.2)
+ggsave(paste(plotsFolder, <span style="color: #b9ca4a;">"rateCodeTipDensityHist.jpg"</span>, sep = <span style="color: #b9ca4a;">"/"</span>), rateCodeTipDensityHist)
+
+logTripDistanceHist <span style="color: #70c0b1;">&lt;-</span> ggplot(data = data, aes(log(trip_distance))) +
+    geom_histogram(bins = 100)
+ggsave(paste(plotsFolder, <span style="color: #b9ca4a;">"logTripDistanceHist.jpg"</span>, sep = <span style="color: #b9ca4a;">"/"</span>), logTripDistanceHist)
+
+distanceTipPlot <span style="color: #70c0b1;">&lt;-</span> ggplot(data = data,
+                          aes(x = log(trip_distance), y = log(tip_amount))) +
+    geom_point()
+ggsave(paste(plotsFolder, <span style="color: #b9ca4a;">"distanceTipPlot.jpg"</span>, sep = <span style="color: #b9ca4a;">"/"</span>), distanceTipPlot)
+
+tollsTipPlot <span style="color: #70c0b1;">&lt;-</span> ggplot(data = data,
+                       aes(x = tolls_amount, y = log(tip_amount))) + geom_point()
+ggsave(paste(plotsFolder, <span style="color: #b9ca4a;">"tollsTipPlot.jpg"</span>, sep = <span style="color: #b9ca4a;">"/"</span>), tollsTipPlot)
+
+tollsTipDensityHist <span style="color: #70c0b1;">&lt;-</span> ggplot(data = data,
+                              aes(x = log(tip_amount), y = stat(density),
+                                  fill = as.factor(tollPaid))) +
+    geom_histogram(bins = 100, position = <span style="color: #b9ca4a;">"identity"</span>, alpha = 0.2)
+ggsave(paste(plotsFolder, <span style="color: #b9ca4a;">"tollsTipDensityHist.jpg"</span>, sep = <span style="color: #b9ca4a;">"/"</span>), tollsTipDensityHist)
+
+rideTimeHist <span style="color: #70c0b1;">&lt;-</span> ggplot(data = data, aes(log(rideTime))) + geom_histogram(bins = 100)
+ggsave(paste(plotsFolder, <span style="color: #b9ca4a;">"rideTimeHist.jpg"</span>, sep = <span style="color: #b9ca4a;">"/"</span>), rideTimeHist)
+rideTipPlot <span style="color: #70c0b1;">&lt;-</span> ggplot(data = data, aes(x = log(rideTime),
+                                       y = log(tip_amount))) + geom_point()
+ggsave(paste(plotsFolder, <span style="color: #b9ca4a;">"rideTipPlot.jpg"</span>, sep = <span style="color: #b9ca4a;">"/"</span>), rideTipPlot)
+
+</pre>
+</div>
+
+<p>
+the following plot showcases the distribution of tips by the passenger
+count, tip's distribution does not change much across this variable,
+other than the upper tain being slightly shorter when 2 or more passengers.
+</p>
+
+<div id="org6effb65" class="figure">
+<p><img src="./plots/passengerTipBox.jpg" alt="passengerTipBox.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 8: </span>Log-tip distribution by number of passengers</p>
+</div>
+
+
+<p>
+next two plots display tip's distribution for the time variables computed
+before. There is no noticiable difference in the tip's distribution,
+other than on work days, the upper tail is fatter. these variables might
+not be that interesting when modeling.
+</p>
+
+<div id="org3b7929a" class="figure">
+<p><img src="./plots/weekendTipDensityHist.jpg" alt="weekendTipDensityHist.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 9: </span>Log-tip density histogram by day type</p>
+</div>
+
+
+
+<div id="org1c1060c" class="figure">
+<p><img src="./plots/dayPeriodTipDensityHist.jpg" alt="dayPeriodTipDensityHist.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 10: </span>Log-tip density histogram by time of the day</p>
+</div>
+
+<p>
+next plot displays tip's density by each of the payment types.
+people paying cash (coded as 2) seem to always give a $1 tip.
+given the little amount of customers not using credit card, this
+variable will not be used in the model.
+</p>
+
+
+<div id="orgb719f7c" class="figure">
+<p><img src="./plots/paymentTipDensityHist.jpg" alt="paymentTipDensityHist.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 11: </span>Log-tip density histogram by payment type</p>
+</div>
+
+<p>
+next plot displays tip's density on the cases where, as far as i have
+understood, the driver was asked to wait somewhere mid ride.
+in this case, when the driver was asked to wait, there is a noticeable
+bimodality in the tips given. this is an interesting property.
+</p>
+
+<div id="orgc13b335" class="figure">
+<p><img src="./plots/storeCodeTipDensityHist.jpg" alt="storeCodeTipDensityHist.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 12: </span>Log-tip density histogram by store flag</p>
+</div>
+
+<p>
+next plot displays tip's density for each of the rate codes.
+when this variable is set to 1, the standard rate applies, other
+cases are trips involving either airports or outer neighborhoods of
+the city. there is a noticeable difference in the distribution between
+the standard rate and all others.
+</p>
+
+<div id="org0bc9533" class="figure">
+<p><img src="./plots/rateCodeTipDensityHist.jpg" alt="rateCodeTipDensityHist.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 13: </span>Log-tip density histogram by rate type</p>
+</div>
+
+
+<p>
+next two plots help understand tip's relation with <i>trip_distance</i>.
+first we look at the log-trip-distance histogram.
+</p>
+
+<div id="org11824e4" class="figure">
+<p><img src="./plots/logTripDistanceHist.jpg" alt="logTripDistanceHist.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 14: </span>Log-trip_distance histogram</p>
+</div>
+
+<p>
+second we look at the log-tip vs log-distance, and notice strong
+positive correlation.
+</p>
+
+<div id="org1ade67d" class="figure">
+<p><img src="./plots/distanceTipPlot.jpg" alt="distanceTipPlot.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 15: </span>Log-tip vs log-distance scatterplot</p>
+</div>
+
+<p>
+next two plots look at the <i>tolls_amount</i> variable. most rides did not
+involve a toll, but in the following scatterplot, it is noticeable
+that there is some positive correlation when tolls were paid.
+</p>
+
+<div id="orgec24af8" class="figure">
+<p><img src="./plots/tollsTipPlot.jpg" alt="tollsTipPlot.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 16: </span>Log-tip vs tolls_amount scatterplot</p>
+</div>
+
+<p>
+as such, a more sensible variable to include in a model would be a dummy
+indicating wheather a toll was paid. next plot displays there is a
+noticeable difference in tip's distribution when a toll is paid.
+</p>
+
+<div id="org522d261" class="figure">
+<p><img src="./plots/tollsTipDensityHist.jpg" alt="tollsTipDensityHist.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 17: </span>Log-tip density histogram by wheather a toll was paid</p>
+</div>
+
+<p>
+next two plots help understand tip's relation with <i>rideTime</i>.
+first we look at the log-rideTime histogram.
+</p>
+
+<div id="org3448c07" class="figure">
+<p><img src="./plots/rideTimeHist.jpg" alt="rideTimeHist.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 18: </span>Log-tip ride time histogram</p>
+</div>
+
+<p>
+finally we look at tip's correlation with the former variable, again,
+strong and positive.
+</p>
+
+<div id="org2b30685" class="figure">
+<p><img src="./plots/rideTipPlot.jpg" alt="rideTipPlot.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 19: </span>Log-tip vs log-ride-time scatterplot</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org2478b11" class="outline-3">
+<h3 id="org2478b11"><span class="section-number-3">2.4</span> spatial visualizations</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+finally, we are going to take a look at the spatial distributions of the data.
+</p>
+
+<p>
+the next two plots showcase the number of trips by pick up and drop off zones.
+other than some key spots, the number of trips, seems to be evenly distriubted
+across the map.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"tidyverse"</span>)
+<span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"ggplot2"</span>)
+<span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"ggmap"</span>)
+<span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"rgdal"</span>)
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">library("maps")</span>
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">library("maptools")</span>
+
+plotsFolder <span style="color: #70c0b1;">&lt;-</span> <span style="color: #b9ca4a;">"plots"</span>
+shapeFilesFolder <span style="color: #70c0b1;">&lt;-</span> <span style="color: #b9ca4a;">"shapeFiles"</span>
+
+data <span style="color: #70c0b1;">&lt;-</span> readRDS(<span style="color: #b9ca4a;">"taxiDataFeatures.rds"</span>) <span style="color: #70c0b1;">%&gt;%</span>
+    filter(tip_amount &lt; 100) <span style="color: #70c0b1;">%&gt;%</span>
+    filter(tip_amount &gt; 0) <span style="color: #70c0b1;">%&gt;%</span>
+    select(tip_amount, PULocationID) <span style="color: #70c0b1;">%&gt;%</span>
+    rename(LocationID = PULocationID)
+
+data <span style="color: #70c0b1;">&lt;-</span> data <span style="color: #70c0b1;">%&gt;%</span> group_by(LocationID) <span style="color: #70c0b1;">%&gt;%</span>
+    summarise(numRides = n())
+
+taxiArea <span style="color: #70c0b1;">&lt;-</span> readOGR(shapeFilesFolder)
+taxiArea@data <span style="color: #70c0b1;">&lt;-</span> data <span style="color: #70c0b1;">%&gt;%</span> right_join(taxiArea@data, <span style="color: #b9ca4a;">"LocationID"</span>)
+taxiArea@data <span style="color: #70c0b1;">%&gt;%</span> summary
+taxiAreaDf <span style="color: #70c0b1;">&lt;-</span> fortify(taxiArea)
+
+taxiAreaDf <span style="color: #70c0b1;">&lt;-</span> taxiAreaDf <span style="color: #70c0b1;">%&gt;%</span>
+    inner_join(taxiArea@data <span style="color: #70c0b1;">%&gt;%</span>
+               rename(id = LocationID) <span style="color: #70c0b1;">%&gt;%</span>
+               mutate(id = id <span style="color: #70c0b1;">%&gt;%</span> as.character), <span style="color: #b9ca4a;">"id"</span>) <span style="color: #70c0b1;">%&gt;%</span>
+    drop_na
+
+
+pickupTipMap <span style="color: #70c0b1;">&lt;-</span> ggplot(taxiAreaDf, aes(long, lat, group = group, fill = taxiAreaDf$numRides)) +
+    geom_polygon() + geom_path(alpha = 0.3) + coord_equal() + theme_classic() +
+    labs(fill = <span style="color: #b9ca4a;">"Trip count"</span>)
+ggsave(paste(plotsFolder, <span style="color: #b9ca4a;">"pickupTripsMap.jpg"</span>, sep = <span style="color: #b9ca4a;">"/"</span>), pickupTipMap)
+</pre>
+</div>
+
+
+<div id="orga7e55b3" class="figure">
+<p><img src="./plots/pickupTripsMap.jpg" alt="pickupTripsMap.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 20: </span>Trip count by taxi pickup zone</p>
+</div>
+
+
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"tidyverse"</span>)
+<span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"ggplot2"</span>)
+<span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"ggmap"</span>)
+<span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"rgdal"</span>)
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">library("maps")</span>
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">library("maptools")</span>
+
+plotsFolder <span style="color: #70c0b1;">&lt;-</span> <span style="color: #b9ca4a;">"plots"</span>
+shapeFilesFolder <span style="color: #70c0b1;">&lt;-</span> <span style="color: #b9ca4a;">"shapeFiles"</span>
+
+data <span style="color: #70c0b1;">&lt;-</span> readRDS(<span style="color: #b9ca4a;">"taxiDataFeatures.rds"</span>) <span style="color: #70c0b1;">%&gt;%</span>
+    filter(tip_amount &lt; 100) <span style="color: #70c0b1;">%&gt;%</span>
+    filter(tip_amount &gt; 0) <span style="color: #70c0b1;">%&gt;%</span>
+    select(tip_amount, DOLocationID) <span style="color: #70c0b1;">%&gt;%</span>
+    rename(LocationID = DOLocationID)
+
+data <span style="color: #70c0b1;">&lt;-</span> data <span style="color: #70c0b1;">%&gt;%</span> group_by(LocationID) <span style="color: #70c0b1;">%&gt;%</span>
+    summarise(numRides = n())
+
+taxiArea <span style="color: #70c0b1;">&lt;-</span> readOGR(shapeFilesFolder)
+taxiArea@data <span style="color: #70c0b1;">&lt;-</span> data <span style="color: #70c0b1;">%&gt;%</span> right_join(taxiArea@data, <span style="color: #b9ca4a;">"LocationID"</span>)
+taxiArea@data <span style="color: #70c0b1;">%&gt;%</span> summary
+taxiAreaDf <span style="color: #70c0b1;">&lt;-</span> fortify(taxiArea)
+
+taxiAreaDf <span style="color: #70c0b1;">&lt;-</span> taxiAreaDf <span style="color: #70c0b1;">%&gt;%</span>
+    inner_join(taxiArea@data <span style="color: #70c0b1;">%&gt;%</span>
+               rename(id = LocationID) <span style="color: #70c0b1;">%&gt;%</span>
+               mutate(id = id <span style="color: #70c0b1;">%&gt;%</span> as.character), <span style="color: #b9ca4a;">"id"</span>) <span style="color: #70c0b1;">%&gt;%</span>
+    drop_na
+
+destinationTipMap <span style="color: #70c0b1;">&lt;-</span> ggplot(taxiAreaDf, aes(long, lat, group = group, fill = taxiAreaDf$numRideso)) +
+    geom_polygon() + geom_path(alpha = 0.3) + coord_equal() + theme_classic() +
+    labs(fill = <span style="color: #b9ca4a;">"Trip count"</span>)
+ggsave(paste(plotsFolder, <span style="color: #b9ca4a;">"destinationTripsMap.jpg"</span>, sep = <span style="color: #b9ca4a;">"/"</span>), destinationTipMap)
+</pre>
+</div>
+
+
+<div id="org670473c" class="figure">
+<p><img src="./plots/destinationTripsMap.jpg" alt="destinationTripsMap.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 21: </span>Trip count by taxi dropoff zone</p>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"tidyverse"</span>)
+<span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"ggplot2"</span>)
+<span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"ggmap"</span>)
+<span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"rgdal"</span>)
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">library("maps")</span>
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">library("maptools")</span>
+
+plotsFolder <span style="color: #70c0b1;">&lt;-</span> <span style="color: #b9ca4a;">"plots"</span>
+shapeFilesFolder <span style="color: #70c0b1;">&lt;-</span> <span style="color: #b9ca4a;">"shapeFiles"</span>
+
+data <span style="color: #70c0b1;">&lt;-</span> readRDS(<span style="color: #b9ca4a;">"taxiDataFeatures.rds"</span>) <span style="color: #70c0b1;">%&gt;%</span>
+    filter(tip_amount &lt; 100) <span style="color: #70c0b1;">%&gt;%</span>
+    filter(tip_amount &gt; 0) <span style="color: #70c0b1;">%&gt;%</span>
+    select(tip_amount, DOLocationID) <span style="color: #70c0b1;">%&gt;%</span>
+    rename(LocationID = DOLocationID)
+?group_by
+data <span style="color: #70c0b1;">&lt;-</span> data <span style="color: #70c0b1;">%&gt;%</span> group_by(LocationID) <span style="color: #70c0b1;">%&gt;%</span>
+    summarise(tip_amount = median(tip_amount))
+
+taxiArea <span style="color: #70c0b1;">&lt;-</span> readOGR(shapeFilesFolder)
+taxiArea@data <span style="color: #70c0b1;">&lt;-</span> data <span style="color: #70c0b1;">%&gt;%</span> right_join(taxiArea@data, <span style="color: #b9ca4a;">"LocationID"</span>)
+taxiArea@data <span style="color: #70c0b1;">%&gt;%</span> summary
+taxiAreaDf <span style="color: #70c0b1;">&lt;-</span> fortify(taxiArea)
+
+taxiAreaDf <span style="color: #70c0b1;">&lt;-</span> taxiAreaDf <span style="color: #70c0b1;">%&gt;%</span>
+    inner_join(taxiArea@data <span style="color: #70c0b1;">%&gt;%</span>
+               rename(id = LocationID) <span style="color: #70c0b1;">%&gt;%</span>
+               mutate(id = id <span style="color: #70c0b1;">%&gt;%</span> as.character), <span style="color: #b9ca4a;">"id"</span>) <span style="color: #70c0b1;">%&gt;%</span>
+    drop_na
+
+taxiAreaDf$tip_amount <span style="color: #70c0b1;">%&gt;%</span> length
+
+destinationTipMap <span style="color: #70c0b1;">&lt;-</span> ggplot(taxiAreaDf, aes(long, lat, group = group, fill = taxiAreaDf$tip_amount)) +
+    geom_polygon() + geom_path(alpha = 0.3) + coord_equal() + theme_classic() +
+    labs(fill = <span style="color: #b9ca4a;">"Median tip"</span>)
+ggsave(paste(plotsFolder, <span style="color: #b9ca4a;">"destinationTipMap.jpg"</span>, sep = <span style="color: #b9ca4a;">"/"</span>), destinationTipMap)
+
+</pre>
+</div>
+
+<p>
+in the next two plots, the median tip (the median is choosen over the mean
+to mitigate the effect of outliers) by pick up and drop off zone. by pick up
+zone, the tips seem to be more evenly distributed, while by drop off zone,
+there seems to be more difference among taxi zones. furthermore, by pick up
+zone, the median tip is truncated at $20, as there are some strong outliers,
+that would distort the plot and show even less difference between the zones.
+</p>
+
+<p>
+with this information, when it comes to modelling, seems like drop off, rather
+than pick up, will be more interisting. also, there are some empty regions in the
+pick up map.
+</p>
+
+
+<div id="org4bf8d82" class="figure">
+<p><img src="./plots/destinationTipMap.jpg" alt="destinationTipMap.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 22: </span>Median tip by taxi dropoff zone</p>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"tidyverse"</span>)
+<span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"ggplot2"</span>)
+<span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"ggmap"</span>)
+<span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"rgdal"</span>)
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">library("maps")</span>
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">library("maptools")</span>
+
+plotsFolder <span style="color: #70c0b1;">&lt;-</span> <span style="color: #b9ca4a;">"plots"</span>
+shapeFilesFolder <span style="color: #70c0b1;">&lt;-</span> <span style="color: #b9ca4a;">"shapeFiles"</span>
+
+data <span style="color: #70c0b1;">&lt;-</span> readRDS(<span style="color: #b9ca4a;">"taxiDataFeatures.rds"</span>) <span style="color: #70c0b1;">%&gt;%</span>
+    filter(tip_amount &lt; 100) <span style="color: #70c0b1;">%&gt;%</span>
+    filter(tip_amount &gt; 0) <span style="color: #70c0b1;">%&gt;%</span>
+    select(tip_amount, PULocationID) <span style="color: #70c0b1;">%&gt;%</span>
+    rename(LocationID = PULocationID)
+
+data <span style="color: #70c0b1;">&lt;-</span> data <span style="color: #70c0b1;">%&gt;%</span> group_by(LocationID) <span style="color: #70c0b1;">%&gt;%</span>
+    summarise(tip_amount = mean(tip_amount))
+data$tip_amount[data$tip_amount &gt; 20] <span style="color: #70c0b1;">&lt;-</span> 20
+
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">taxiArea@data %&gt;% select(LocationID, borough) %&gt;%</span>
+<span style="color: #969896; font-style: italic;">##     </span><span style="color: #969896; font-style: italic;">saveRDS("boroughData.rds")</span>
+
+taxiArea <span style="color: #70c0b1;">&lt;-</span> readOGR(shapeFilesFolder)
+taxiArea@data <span style="color: #70c0b1;">&lt;-</span> data <span style="color: #70c0b1;">%&gt;%</span> right_join(taxiArea@data, <span style="color: #b9ca4a;">"LocationID"</span>)
+taxiArea@data <span style="color: #70c0b1;">%&gt;%</span> summary
+taxiAreaDf <span style="color: #70c0b1;">&lt;-</span> fortify(taxiArea)
+
+taxiAreaDf <span style="color: #70c0b1;">&lt;-</span> taxiAreaDf <span style="color: #70c0b1;">%&gt;%</span>
+    inner_join(taxiArea@data <span style="color: #70c0b1;">%&gt;%</span>
+               rename(id = LocationID) <span style="color: #70c0b1;">%&gt;%</span>
+               mutate(id = id <span style="color: #70c0b1;">%&gt;%</span> as.character), <span style="color: #b9ca4a;">"id"</span>) <span style="color: #70c0b1;">%&gt;%</span>
+    drop_na
+
+taxiAreaDf$tip_amount <span style="color: #70c0b1;">%&gt;%</span> length
+
+pickupTipMap <span style="color: #70c0b1;">&lt;-</span> ggplot(taxiAreaDf, aes(long, lat, group = group, fill = taxiAreaDf$tip_amount)) +
+    geom_polygon() + geom_path(alpha = 0.3) + coord_equal() + theme_classic() +
+    labs(fill = <span style="color: #b9ca4a;">"Median tip"</span>)
+pickupTipMap
+ggsave(paste(plotsFolder, <span style="color: #b9ca4a;">"pickupTipMap.jpg"</span>, sep = <span style="color: #b9ca4a;">"/"</span>), pickupTipMap)
+
+
+</pre>
+</div>
+
+
+<div id="org693d5eb" class="figure">
+<p><img src="./plots/pickupTipMap.jpg" alt="pickupTipMap.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 23: </span>Median tip by taxi pickup zone</p>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgfb80d3f" class="outline-2">
+<h2 id="orgfb80d3f"><span class="section-number-2">3</span> modelling tips</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orgb4d522d" class="outline-3">
+<h3 id="orgb4d522d"><span class="section-number-3">3.1</span> a note on accuracy metrics</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+both the root mean squared error (RMSE) and mean absolute precentage
+error (MAPE) are used to evaluate the models.
+for all the presented models, RMSE ranges between $1.25 and $1.4, while
+MAPE is between 0.4% and 0.5%.
+the mean tip is $2.5 dollars, with a $2.4 standard deviation. all this can
+be interpreted as: the models tend to give predictions that are about $1.3 off.
+these results are as bad they can be. i am however conviced that these kind of
+accuracy metrics are also quite bad at evaluating the performance of
+the models in our particular business case, specially considering how noisy
+are the relationships in the data.
+are we more interested in recommending to the customer the actual amount
+she is going to tip, or are we interested in providing her a summary of what
+other customers in similar situations? i personally believe the later is more
+interesting. as such, models will be evaluated plotting the distributions of the
+actual data as well as the predictions given by the model.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1acfd89" class="outline-3">
+<h3 id="org1acfd89"><span class="section-number-3">3.2</span> linear models</h3>
+<div class="outline-text-3" id="text-3-2">
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #70c0b1;">library</span>(tidyverse)
+<span style="color: #70c0b1;">library</span>(reshape2)
+<span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"glmnet"</span>)
+<span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"lme4"</span>)
+
+plotsFolder <span style="color: #70c0b1;">&lt;-</span> <span style="color: #b9ca4a;">"plots"</span>
+modelsFolder <span style="color: #70c0b1;">&lt;-</span> <span style="color: #b9ca4a;">"models"</span>
+
+boroughData <span style="color: #70c0b1;">&lt;-</span>  readRDS(<span style="color: #b9ca4a;">"boroughData.rds"</span>) <span style="color: #70c0b1;">%&gt;%</span>
+    rename(DOLocationID = LocationID)
+
+data <span style="color: #70c0b1;">&lt;-</span> readRDS(<span style="color: #b9ca4a;">"taxiDataFinal.rds"</span>) <span style="color: #70c0b1;">%&gt;%</span>
+    filter(trip_distance &gt; 0) <span style="color: #70c0b1;">%&gt;%</span>
+    left_join(boroughData, by = <span style="color: #b9ca4a;">"DOLocationID"</span>) <span style="color: #70c0b1;">%&gt;%</span>
+    drop_na
+
+discreteTipWeight <span style="color: #70c0b1;">&lt;-</span> data$tip_amount <span style="color: #70c0b1;">%&gt;%</span>
+    sapply(
+        <span style="color: #c397d8;">function</span> (x) {
+            <span style="color: #c397d8;">if</span> (x <span style="color: #70c0b1;">%in%</span> c(1.0, 2.0, 3.0, 5.0)) 1.3
+            <span style="color: #c397d8;">else</span> 1
+        })
+
+<span style="color: #7aa6da;">evaluation</span> <span style="color: #70c0b1;">&lt;-</span> <span style="color: #c397d8;">function</span>(model, testData) {
+    mu <span style="color: #70c0b1;">&lt;-</span> data$tip_amount <span style="color: #70c0b1;">%&gt;%</span> log <span style="color: #70c0b1;">%&gt;%</span>  mean
+    sigma <span style="color: #70c0b1;">&lt;-</span> data$tip_amount <span style="color: #70c0b1;">%&gt;%</span> log <span style="color: #70c0b1;">%&gt;%</span> sd
+    prediction0 <span style="color: #70c0b1;">&lt;-</span> predict(model, testData)
+    evaluation0 <span style="color: #70c0b1;">&lt;-</span> testData <span style="color: #70c0b1;">%&gt;%</span> select(tip_amount) <span style="color: #70c0b1;">%&gt;%</span>
+        mutate(prediction = prediction0) <span style="color: #70c0b1;">%&gt;%</span>
+        mutate(tip_amount = exp(mu + (tip_amount * sigma)),
+               prediction = exp(mu + (prediction * sigma))) <span style="color: #70c0b1;">%&gt;%</span>
+        mutate(error = tip_amount - prediction) <span style="color: #70c0b1;">%&gt;%</span>
+        mutate(mape = abs(error / tip_amount),
+               rmse = error * error)
+    evaluation0 <span style="color: #70c0b1;">%&gt;%</span> summary
+    mape <span style="color: #70c0b1;">&lt;-</span> evaluation0$mape <span style="color: #70c0b1;">%&gt;%</span> mean
+    rmse <span style="color: #70c0b1;">&lt;-</span> evaluation0$rmse <span style="color: #70c0b1;">%&gt;%</span> mean <span style="color: #70c0b1;">%&gt;%</span> sqrt
+
+    errorDistribution <span style="color: #70c0b1;">&lt;-</span> ggplot(data = evaluation0, aes(error)) + geom_histogram(bins = 100)
+
+    print(<span style="color: #b9ca4a;">"evaluation metrics"</span>)
+    print(paste(<span style="color: #b9ca4a;">"mape is:"</span>, mape))
+    print(paste(<span style="color: #b9ca4a;">"rmse is:"</span>, rmse))
+
+    list(evaluationFrame = evaluation0, errorDistrbution = errorDistribution,
+         rmse = rmse, mape = mape)
+}
+
+<span style="color: #7aa6da;">posteriorPredictivePlot</span> <span style="color: #70c0b1;">&lt;-</span> <span style="color: #c397d8;">function</span>(evaluation, name) {
+    toPlot <span style="color: #70c0b1;">&lt;-</span> evaluation$evaluationFrame <span style="color: #70c0b1;">%&gt;%</span>
+        select(tip_amount, prediction) <span style="color: #70c0b1;">%&gt;%</span>
+        melt
+    print(toPlot <span style="color: #70c0b1;">%&gt;%</span> head)
+    print(paste(plotsFolder, name, sep = <span style="color: #b9ca4a;">"/"</span>))
+    plot <span style="color: #70c0b1;">&lt;-</span> ggplot(toPlot, aes(value, fill = variable)) +
+        geom_histogram(bins = 100, position = <span style="color: #b9ca4a;">"identity"</span>, alpha = 0.3) + xlim(<span style="color: #e7c547;">NA</span>, 10)
+    ggsave(paste(plotsFolder, name, sep = <span style="color: #b9ca4a;">"/"</span>), plot)
+    plot
+}
+
+<span style="color: #969896; font-style: italic;">##  </span><span style="color: #969896; font-style: italic;">mutate and select variables to fit             </span>
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">dataToFit &lt;- data %&gt;%</span>
+<span style="color: #969896; font-style: italic;">##     </span><span style="color: #969896; font-style: italic;">filter(trip_distance &gt; 0) %&gt;% </span>
+<span style="color: #969896; font-style: italic;">##     </span><span style="color: #969896; font-style: italic;">## change numeric variables</span>
+<span style="color: #969896; font-style: italic;">##     </span><span style="color: #969896; font-style: italic;">mutate_at(</span>
+<span style="color: #969896; font-style: italic;">##         </span><span style="color: #969896; font-style: italic;">.vars = vars(trip_distance, fare_amount,</span>
+<span style="color: #969896; font-style: italic;">##                      </span><span style="color: #969896; font-style: italic;">tip_amount, rideTime),</span>
+<span style="color: #969896; font-style: italic;">##         </span><span style="color: #969896; font-style: italic;">.funs = function(x) x %&gt;% log %&gt;% scale) %&gt;%</span>
+<span style="color: #969896; font-style: italic;">##                                         </span><span style="color: #969896; font-style: italic;"># change factor variables</span>
+<span style="color: #969896; font-style: italic;">##     </span><span style="color: #969896; font-style: italic;">mutate_at(</span>
+<span style="color: #969896; font-style: italic;">##         </span><span style="color: #969896; font-style: italic;">.vars = vars(passenger_count, RatecodeID,</span>
+<span style="color: #969896; font-style: italic;">##                      </span><span style="color: #969896; font-style: italic;">store_and_fwd_flag, payment_type,</span>
+<span style="color: #969896; font-style: italic;">##                      </span><span style="color: #969896; font-style: italic;">weekEnd, tollPaid, borough),</span>
+<span style="color: #969896; font-style: italic;">##         </span><span style="color: #969896; font-style: italic;">.funs = as.factor) %&gt;%</span>
+<span style="color: #969896; font-style: italic;">##     </span><span style="color: #969896; font-style: italic;">select(</span>
+<span style="color: #969896; font-style: italic;">##         </span><span style="color: #969896; font-style: italic;">trip_distance, fare_amount, tip_amount, rideTime,</span>
+<span style="color: #969896; font-style: italic;">##         </span><span style="color: #969896; font-style: italic;">passenger_count, RatecodeID, store_and_fwd_flag,</span>
+<span style="color: #969896; font-style: italic;">##         </span><span style="color: #969896; font-style: italic;">weekEnd, tollPaid, borough)</span>
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">dataToFit %&gt;% saveRDS("dataToFit.rds")</span>
+dataToFit <span style="color: #70c0b1;">&lt;-</span> readRDS(<span style="color: #b9ca4a;">"dataToFit.rds"</span>)
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">split data in train and test sets</span>
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">0.8 of the data will be used to train, remainder to test</span>
+trainSize <span style="color: #70c0b1;">&lt;-</span> floor(0.8 * nrow(dataToFit))
+trainSize
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">set the seed to make your partition reproducible</span>
+set.seed(123)
+trainIndex <span style="color: #70c0b1;">&lt;-</span> sample(seq_len(nrow(dataToFit)), size = trainSize)
+
+train <span style="color: #70c0b1;">&lt;-</span> dataToFit[trainIndex, ]
+test <span style="color: #70c0b1;">&lt;-</span> dataToFit[-trainIndex, ]
+
+model0 <span style="color: #70c0b1;">&lt;-</span> lm(tip_amount ~ -1 + borough + RatecodeID, data = train)
+evaluation0 <span style="color: #70c0b1;">&lt;-</span> evaluation(model0, test)
+posteriorPredictive <span style="color: #70c0b1;">&lt;-</span> evaluation0 <span style="color: #70c0b1;">%&gt;%</span> posteriorPredictivePlot(
+                                           <span style="color: #b9ca4a;">"evaluation0PosteriorPredictive.jpg"</span>)
+
+model1 <span style="color: #70c0b1;">&lt;-</span> lm(tip_amount ~ -1 + borough +
+                 RatecodeID + tollPaid + store_and_fwd_flag +
+                 fare_amount + trip_distance,
+             data = train)
+evaluation1 <span style="color: #70c0b1;">&lt;-</span> model1 <span style="color: #70c0b1;">%&gt;%</span> evaluation(test)
+posteriorPredictive <span style="color: #70c0b1;">&lt;-</span> evaluation1 <span style="color: #70c0b1;">%&gt;%</span> posteriorPredictivePlot(
+                                           <span style="color: #b9ca4a;">"evaluation1PosteriorPredictive.jpg"</span>)
+
+model2 <span style="color: #70c0b1;">&lt;-</span> lm(tip_amount ~ -1 +
+                 RatecodeID + tollPaid + store_and_fwd_flag +
+                 fare_amount + trip_distance + borough,
+             data = train)
+
+evaluation2 <span style="color: #70c0b1;">&lt;-</span> model2 <span style="color: #70c0b1;">%&gt;%</span> evaluation(test)
+posteriorPredictive2 <span style="color: #70c0b1;">&lt;-</span> evaluation2 <span style="color: #70c0b1;">%&gt;%</span> posteriorPredictivePlot(
+                                            <span style="color: #b9ca4a;">"evaluation2PosteriorPredictive.jpg"</span>)
+
+x <span style="color: #70c0b1;">&lt;-</span> model.matrix(tip_amount ~ -1 + RatecodeID + tollPaid + store_and_fwd_flag +
+                 fare_amount + trip_distance + borough, dataToFit[trainIndex,])
+y <span style="color: #70c0b1;">&lt;-</span> dataToFit[trainIndex,] <span style="color: #70c0b1;">%&gt;%</span> select(tip_amount) <span style="color: #70c0b1;">%&gt;%</span> as.matrix
+
+model3cv <span style="color: #70c0b1;">&lt;-</span> cv.glmnet(x = x, y = y, nfolds = 5, lambda = seq(2, 100, 2),
+                    alpha = 0, family = <span style="color: #b9ca4a;">"gaussian"</span>)
+
+model3 <span style="color: #70c0b1;">&lt;-</span> glmnet(x = x, y = y, lambda = model3cv$lambda.min,
+                 alpha = 0.1, family = <span style="color: #b9ca4a;">"gaussian"</span>)
+
+modelsFolder <span style="color: #70c0b1;">&lt;-</span> <span style="color: #b9ca4a;">"models"</span>
+model3 <span style="color: #70c0b1;">%&gt;%</span> saveRDS(paste(modelsFolder, <span style="color: #b9ca4a;">"model3.rds"</span>, sep = <span style="color: #b9ca4a;">'/'</span>))
+model3 <span style="color: #70c0b1;">&lt;-</span> readRDS(paste(modelsFolder, <span style="color: #b9ca4a;">"model3.rds"</span>, sep = <span style="color: #b9ca4a;">'/'</span>))
+
+prediction3 <span style="color: #70c0b1;">&lt;-</span> predict(
+    model3,
+    newx = model.matrix(
+        tip_amount ~ -1 + RatecodeID + tollPaid + store_and_fwd_flag +
+            fare_amount + trip_distance + borough,
+        dataToFit[-trainIndex,]))
+
+evaluation3 <span style="color: #70c0b1;">&lt;-</span> list(evaluationFrame = test <span style="color: #70c0b1;">%&gt;%</span> select(tip_amount) <span style="color: #70c0b1;">%&gt;%</span>
+                        mutate(prediction = prediction3))
+posteriorPredictive3 <span style="color: #70c0b1;">&lt;-</span> evaluation3 <span style="color: #70c0b1;">%&gt;%</span> posteriorPredictivePlot(
+                                            <span style="color: #b9ca4a;">"evaluation3PosteriorPredictive.jpg"</span>)
+
+model4 <span style="color: #70c0b1;">&lt;-</span> lmer(tip_amount ~ -1 + (1 | borough) + trip_distance +
+                   store_and_fwd_flag + (0 + fare_amount| borough), data = train)
+
+evaluation4 <span style="color: #70c0b1;">&lt;-</span> model4 <span style="color: #70c0b1;">%&gt;%</span> evaluation(test)
+posteriorPredictive4 <span style="color: #70c0b1;">&lt;-</span> evaluation4 <span style="color: #70c0b1;">%&gt;%</span> posteriorPredictivePlot(
+                                            <span style="color: #b9ca4a;">"evaluation4PosteriorPredictive.jpg"</span>)
+
+model5 <span style="color: #70c0b1;">&lt;-</span> lmer(tip_amount ~ -1 +
+                   (1 | RatecodeID) + (1 | tollPaid) + (1 | store_and_fwd_flag) +
+                   fare_amount + (1 + fare_amount | borough) + trip_distance,
+               data = train, weights = discreteTipWeight[trainIndex])
+
+evaluation5 <span style="color: #70c0b1;">&lt;-</span> model5 <span style="color: #70c0b1;">%&gt;%</span> evaluation(test)
+posteriorPredictive5 <span style="color: #70c0b1;">&lt;-</span> posteriorPredictivePlot(evaluation5,
+                                                <span style="color: #b9ca4a;">"evaluation5PosteriorPredictive.jpg"</span>)
+
+</pre>
+</div>
+
+<p>
+our first linear model is fitted with only the <i>borough</i> and <i>RatecodeID</i>
+dummy variables. this fit is quite bad, but is here just to find out how
+this variables are effecting the model.
+</p>
+
+
+<div id="org9ddefcf" class="figure">
+<p><img src="./plots/evaluation0PosteriorPredictive.jpg" alt="evaluation0PosteriorPredictive.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 24: </span>Posterior predictive evaluation</p>
+</div>
+
+<p>
+the next two models include <i>trip_distance</i> as well as <i>fare_amount</i> in
+logarithms and normalized. as dummy variables <i>RatecodeID</i>, <i>tollPaid</i>,
+<i>store_and_fwd_flag</i> and drop off <i>borough</i> are selected as they are a
+subset is representative of all the discrete variables availabel. a better
+approach would have been to take all the discrete variables, and transform
+with PCA, to avoid the dimensionality problem that justified choosing only
+a subset. on the other hand, the implemented approach improves the
+interpretability of the models.
+</p>
+
+<p>
+this next plot displays the results of a simple linear regression.
+the on first sight, it is obvious that the models is doing a good job
+of approximating the general distribution, but seems to have problems
+picking up the spikes that are present on the round tips (tips of $1, $2, etc)
+as well as the left tail.
+</p>
+
+
+<div id="org6023d47" class="figure">
+<p><img src="./plots/evaluation1PosteriorPredictive.jpg" alt="evaluation1PosteriorPredictive.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 25: </span>Posterior predictive evaluation</p>
+</div>
+
+<p>
+the most interesting failure of the previous model would be the round tips.
+first, some clients seem to be giving a tip of $1 regardless of other
+characteristics of the trip. furthermore, there also seems to be a tendency
+to give round tips.
+to approximate this behaviour, the next model is a weighted linear model,
+were the round values have more weight than the remaining. as such, the
+predictive posterior of this model is tighter to the original data:
+first, it is approximates the $2 spike quite well.
+but it also generates two spikes between the actuals $1 and $2. this is
+interesting, because it indicates that we do not have enough information
+to approximate linearly the spike at $1 and the remaining error at the
+spike at $2. this would be probably one of the most interesting models to
+actually implement in a production evironment.
+</p>
+
+
+<div id="org6b177c7" class="figure">
+<p><img src="./plots/evaluation2PosteriorPredictive.jpg" alt="evaluation2PosteriorPredictive.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 26: </span>Posterior predictive evaluation</p>
+</div>
+
+<p>
+the next plot showcases the results for a linear regression with
+regularization. this model fits the data quite poorly.
+</p>
+
+
+<div id="org836c6bb" class="figure">
+<p><img src="./plots/evaluation3PosteriorPredictive.jpg" alt="evaluation3PosteriorPredictive.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 27: </span>Posterior predictive evaluation</p>
+</div>
+
+<p>
+finally, in order to approximate better some non linearities, the
+previous models are extended with interaction terms between <i>borough</i>
+and <i>fare_amount</i> in a mixed linear model. this is, we allow that for
+each <i>borough</i>, the <i>fare_amount</i> variable has a different slope term.
+as in the previous linear model, both regular and weighted linear models
+are fitted. the fit is quite similar than before, but this model seems
+to better approximate the spikyness of the data.
+</p>
+
+
+<div id="org6decf66" class="figure">
+<p><img src="./plots/evaluation4PosteriorPredictive.jpg" alt="evaluation4PosteriorPredictive.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 28: </span>Posterior predictive evaluation</p>
+</div>
+
+
+<div id="org5f8e257" class="figure">
+<p><img src="./plots/evaluation5PosteriorPredictive.jpg" alt="evaluation5PosteriorPredictive.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 29: </span>Posterior predictive evaluation</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orge15e809" class="outline-3">
+<h3 id="orge15e809"><span class="section-number-3">3.3</span> random forest</h3>
+<div class="outline-text-3" id="text-3-3">
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #70c0b1;">library</span>(tidyverse)
+<span style="color: #70c0b1;">library</span>(reshape2)
+<span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"randomForest"</span>)
+
+<span style="color: #7aa6da;">evaluation</span> <span style="color: #70c0b1;">&lt;-</span> <span style="color: #c397d8;">function</span>(model, testData) {
+    mu <span style="color: #70c0b1;">&lt;-</span> data$tip_amount <span style="color: #70c0b1;">%&gt;%</span> log <span style="color: #70c0b1;">%&gt;%</span>  mean
+    sigma <span style="color: #70c0b1;">&lt;-</span> data$tip_amount <span style="color: #70c0b1;">%&gt;%</span> log <span style="color: #70c0b1;">%&gt;%</span> sd
+    prediction0 <span style="color: #70c0b1;">&lt;-</span> predict(model, testData)
+    evaluation0 <span style="color: #70c0b1;">&lt;-</span> testData <span style="color: #70c0b1;">%&gt;%</span> select(tip_amount) <span style="color: #70c0b1;">%&gt;%</span>
+        mutate(prediction = prediction0) <span style="color: #70c0b1;">%&gt;%</span>
+        mutate(tip_amount = exp(mu + (tip_amount * sigma)),
+               prediction = exp(mu + (prediction * sigma))) <span style="color: #70c0b1;">%&gt;%</span>
+        mutate(error = tip_amount - prediction) <span style="color: #70c0b1;">%&gt;%</span>
+        mutate(mape = abs(error / tip_amount),
+               rmse = error * error)
+    evaluation0 <span style="color: #70c0b1;">%&gt;%</span> summary
+    mape <span style="color: #70c0b1;">&lt;-</span> evaluation0$mape <span style="color: #70c0b1;">%&gt;%</span> mean
+    rmse <span style="color: #70c0b1;">&lt;-</span> evaluation0$rmse <span style="color: #70c0b1;">%&gt;%</span> mean <span style="color: #70c0b1;">%&gt;%</span> sqrt
+
+    errorDistribution <span style="color: #70c0b1;">&lt;-</span> ggplot(data = evaluation0, aes(error)) + geom_histogram(bins = 100)
+
+    print(<span style="color: #b9ca4a;">"evaluation metrics"</span>)
+    print(paste(<span style="color: #b9ca4a;">"mape is:"</span>, mape))
+    print(paste(<span style="color: #b9ca4a;">"rmse is:"</span>, rmse))
+
+    list(evaluationFrame = evaluation0, errorDistrbution = errorDistribution,
+         rmse = rmse, mape = mape)
+}
+
+<span style="color: #7aa6da;">posteriorPredictivePlot</span> <span style="color: #70c0b1;">&lt;-</span> <span style="color: #c397d8;">function</span>(evaluation, name) {
+    toPlot <span style="color: #70c0b1;">&lt;-</span> evaluation$evaluationFrame <span style="color: #70c0b1;">%&gt;%</span>
+        select(tip_amount, prediction) <span style="color: #70c0b1;">%&gt;%</span>
+        melt
+    print(toPlot <span style="color: #70c0b1;">%&gt;%</span> head)
+    print(paste(plotsFolder, name, sep = <span style="color: #b9ca4a;">"/"</span>))
+    plot <span style="color: #70c0b1;">&lt;-</span> ggplot(toPlot, aes(value, fill = variable)) +
+        geom_histogram(bins = 100, position = <span style="color: #b9ca4a;">"identity"</span>, alpha = 0.3) + xlim(<span style="color: #e7c547;">NA</span>, 10)
+    ggsave(paste(plotsFolder, name, sep = <span style="color: #b9ca4a;">"/"</span>), plot)
+    plot
+}
+
+
+plotsFolder <span style="color: #70c0b1;">&lt;-</span> <span style="color: #b9ca4a;">"plots"</span>
+modelsFolder <span style="color: #70c0b1;">&lt;-</span> <span style="color: #b9ca4a;">"models"</span>
+
+boroughData <span style="color: #70c0b1;">&lt;-</span>  readRDS(<span style="color: #b9ca4a;">"boroughData.rds"</span>) <span style="color: #70c0b1;">%&gt;%</span>
+    rename(DOLocationID = LocationID)
+
+data <span style="color: #70c0b1;">&lt;-</span> readRDS(<span style="color: #b9ca4a;">"taxiDataFinal.rds"</span>) <span style="color: #70c0b1;">%&gt;%</span>
+    filter(trip_distance &gt; 0) <span style="color: #70c0b1;">%&gt;%</span>
+    left_join(boroughData, by = <span style="color: #b9ca4a;">"DOLocationID"</span>) <span style="color: #70c0b1;">%&gt;%</span>
+    drop_na
+
+
+dataToFit <span style="color: #70c0b1;">&lt;-</span> readRDS(<span style="color: #b9ca4a;">"dataToFit.rds"</span>)
+trainSize <span style="color: #70c0b1;">&lt;-</span> floor(0.8 * nrow(dataToFit))
+trainSize
+<span style="color: #969896; font-style: italic;">## </span><span style="color: #969896; font-style: italic;">set the seed to make your partition reproducible</span>
+set.seed(123)
+trainIndex <span style="color: #70c0b1;">&lt;-</span> sample(seq_len(nrow(dataToFit)), size = trainSize)
+
+train <span style="color: #70c0b1;">&lt;-</span> dataToFit[trainIndex, ] <span style="color: #70c0b1;">%&gt;%</span> select(-rideTime, -weekEnd)
+test <span style="color: #70c0b1;">&lt;-</span> dataToFit[-trainIndex, ] <span style="color: #70c0b1;">%&gt;%</span> select(-rideTime, -weekEnd)
+
+maxnodes <span style="color: #70c0b1;">&lt;-</span> c(10, 30, 50, 70, 80, 90, 100)
+nodesizes <span style="color: #70c0b1;">&lt;-</span> c(1000, 10000, 100000, 110000, 120000, 150000)
+paramGrid <span style="color: #70c0b1;">&lt;-</span> expand.grid(maxnodes, nodesizes)
+colnames(paramGrid) <span style="color: #70c0b1;">&lt;-</span> c(<span style="color: #b9ca4a;">"maxnode"</span>, <span style="color: #b9ca4a;">"nodesize"</span>)
+paramGrid <span style="color: #70c0b1;">&lt;-</span> paramGrid <span style="color: #70c0b1;">%&gt;%</span> filter(
+                           nodesize &gt;= 100000) <span style="color: #70c0b1;">%&gt;%</span>
+    filter(nodesize != 150000) <span style="color: #70c0b1;">%&gt;%</span>
+    filter(nodesize != 110000)
+paramGrid
+<span style="color: #7aa6da;">rfTrain</span> <span style="color: #70c0b1;">&lt;-</span> <span style="color: #c397d8;">function</span>(maxnode, nodesize) {
+    rf0 <span style="color: #70c0b1;">&lt;-</span> randomForest(tip_amount ~ ., data = train,
+                        xtest = test <span style="color: #70c0b1;">%&gt;%</span> select(-tip_amount),
+                        ytest = test$tip_amount,
+                        do.trace = 5, keep.forest = <span style="color: #e7c547;">TRUE</span>,
+                        mtry = 6, nodesize = nodesize, maxnodes = maxnode, ntree = 20)
+    evaluation0 <span style="color: #70c0b1;">&lt;-</span> rf0 <span style="color: #70c0b1;">%&gt;%</span> evaluation(test)
+
+    posteriorPredictive <span style="color: #70c0b1;">&lt;-</span> evaluation0 <span style="color: #70c0b1;">%&gt;%</span>
+        posteriorPredictivePlot(
+            paste(<span style="color: #b9ca4a;">"rfNodesize"</span>, nodesize, <span style="color: #b9ca4a;">"Maxnode"</span>, maxnode,
+                  <span style="color: #b9ca4a;">"PosteriorPredictive.jpg"</span>, sep = <span style="color: #b9ca4a;">''</span>))
+}
+
+map2(paramGrid$maxnode, paramGrid$nodesize, rfTrain)
+
+</pre>
+</div>
+
+<p>
+here we have taken a more <i>machine learning</i> approach with hyperparameter
+tunning. we have computed several random forest, with different number
+of nodes and sizes of those nodes. this approach was to strike a balance
+between the approximation between the fitting of the right tail and the
+fitting of the spikyness arround the mode. only four of the models
+are displayed, showcasing these effects. 
+models that seem good at approximating the tail, tend to fail at the mode,
+and when the mode is nicely approximated, these the tail is underfitted.
+</p>
+
+
+<div id="org86aec37" class="figure">
+<p><img src="./plots/rfNodesize10000Maxnode100PosteriorPredictive.jpg" alt="rfNodesize10000Maxnode100PosteriorPredictive.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 30: </span>Posterior predictive evaluation with 100 nodes of size 10000</p>
+</div>
+
+
+<div id="orgb4974f3" class="figure">
+<p><img src="./plots/rfNodesize110000Maxnode30PosteriorPredictive.jpg" alt="rfNodesize110000Maxnode30PosteriorPredictive.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 31: </span>Posterior predictive evaluation with 30 nodes of size 110000</p>
+</div>
+
+
+<div id="org199e57a" class="figure">
+<p><img src="./plots/rfNodesize1e+05Maxnode70PosteriorPredictive.jpg" alt="rfNodesize1e+05Maxnode70PosteriorPredictive.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 32: </span>Posterior predictive evaluation with 70 nodes of size 150000</p>
+</div>
+
+
+<div id="orga1d74c5" class="figure">
+<p><img src="./plots/rfNodesize110000Maxnode50PosteriorPredictive.jpg" alt="rfNodesize110000Maxnode50PosteriorPredictive.jpg" width="600px" />
+</p>
+<p><span class="figure-number">Figure 33: </span>Posterior predictive evaluation with 50 nodes of size 11000</p>
+</div>
+</div>
+</div>
+
+
+
+
+
+<div id="outline-container-orga90ddc5" class="outline-3">
+<h3 id="orga90ddc5"><span class="section-number-3">3.4</span> choosing a model</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+even though, the better accuracy metrics were obtained in some of the
+random forest, i would choose the weighted mixed linear model.
+the main reason is because the posterior predictive distribution
+has a tighter fit to the data. i believe that most of the failure of the
+model is due to the spike at $1, which is hard to approximate, and as such,
+i am not strongly concerned with the poor metrics.
+other nice feature of linear models is they are easy to understand, and this
+makes them better thought tools to reason about our data and extend the analysis.
+for example, i think an interesting next step would be to A/B test different
+recommendations on the clients by their drop off destination. another
+interesting project would be to evaluate the changes of the tips provided,
+given the difference between the estimated charge that is usually provided
+when contracting the ride and the actual fare amount.
+this would allow to figure out recomendations and figures to give the
+customers in order to maximize tips for driver satisfaction. in order to
+carry out these experiments, having a model that has clear effects for
+all the variables is a strong feature.
+</p>
+
+<p>
+the main caveat of this model, is that is linear. as such, any non linear
+patterns in the data are not going to be well approximated. furthermore,
+i have been working under the assumption that the posterior predictive
+distribution is a good metric for evaluation. if we were just interested
+in accuracy performance, this model would be a bad choice.
+</p>
+
+<p>
+some of the things to improve in the model would be the spatial effects.
+given the limited computing power i have. these effects were approximated
+using borough dummies, but a better approach would be to use the full 2k
+taxi zones. furthermore, it would be interesting to implement some of the
+models proposed <a href="https://mc-stan.org/users/documentation/case-studies/icar_stan.html">here</a>, as from the descriptive plots it is made obvious that
+the distribution of tips changes by zone.
+other interesting extension, with more months, would be to include month
+dummies, in order to evaluate whether tips as higher on christmas, during
+months with high tourism, etc.
+</p>
+
+<p>
+finally, it would be quite interesting to implement a mixture model,
+were the tips are either distributed by a gamma (as we did in the model)
+or a multinomial distribution of the values $1, $2, $3, $5. this would
+nicely fit the actual data.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org1cbc718" class="outline-3">
+<h3 id="org1cbc718"><span class="section-number-3">3.5</span> how to implement as an API</h3>
+<div class="outline-text-3" id="text-3-5">
+<p>
+in order to implement this model as an API, i think two components would
+be necessary:
+</p>
+<ul class="org-ul">
+<li>a service that would provide the recomendation based on the ride features</li>
+<li>a backend that would update the model with the new available data</li>
+</ul>
+
+<p>
+for the first component, we would need a function that, provided the
+ride characteristics, would read the current state of the fitted model, and
+provide the recommendation.
+for the second component, whenever an update of the model is required, would
+re-fit the data and serve the new model to the first component.
+</p>
+
+<p>
+the most efficient way to do this would be as two concurrent processes, with
+the first component activating when new models are fitted or recommendations
+are required.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: joaquin</p>
+<p class="date">Created: 2019-04-21 dom 13:21</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
