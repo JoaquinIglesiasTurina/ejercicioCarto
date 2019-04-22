@@ -1,7 +1,7 @@
 #+OPTIONS: ^:nil
 
 
-* download data
+* Download data
 
 #+BEGIN_SRC R
   library("tidyverse")
@@ -29,17 +29,17 @@
 
 
 
-* exploratory data analysis
+* Exploratory data analysis
 ** cleaning data
-   there are some strange things in the data. these strange cases will be removed.
-   it would be /more correct/ to leave them as missing values and make some mean
+   There are some strange things in the data. These strange cases will be removed.
+   It would be /more correct/ to leave them as missing values and make some mean
    imputations, but given that
-   - i am running this in my machine with 8 gigs of ram,
+   - I am running this in my machine with 8 gigs of ram,
    - we have sufficient data anyways:
-   i belive it is wiser to throw away these kind of obvservations where numbers just dont
+   I belive it is wiser to throw away these kind of obvservations where numbers just dont
    make sense.
 
-   in the next code snippet we will study these fascinating strange cases
+   In the next code snippet we will study these fascinating strange cases
 
 #+BEGIN_SRC R
   library("tidyverse")
@@ -82,44 +82,44 @@
   # checking cases with negative extra
   ## data1 %>% filter(extra < 0) %>% summary
 #+END_SRC
-   i will probably comment out all the checks, so you can see that i have put the effort
+   I will probably comment out all the checks, so you can see that i have put the effort
    and studied the situation so i can understand whats going on. but here i write my
-   thought process
+   thought process.
    
-   to begin with, there are two cases were the pickup time is later than the dropoff time
+   To begin with, there are two cases were the pickup time is later than the dropoff time
    this makes no sense, obvservations are out.
 
-   there is another case were the fares are negative, again, how can this be? there is usually
-   a minimum charge in taxis. we need to look up [[https://www1.nyc.gov/site/tlc/passengers/taxi-fare.page][here]] what
+   There is another case were the fares are negative, again, how can this be? there is usually
+   a minimum charge in taxis. We need to look up [[https://www1.nyc.gov/site/tlc/passengers/taxi-fare.page][here]] what
    is the initial charge on new york taxis: $2.50 at the time of writing.
    [[https://nymag.com/nymetro/urban/features/taxi/n_20286/][this pice of news]] states that the $2.50 inital chanrge was stablished in 2005, so we can
    apply this filter to all our required data!
    
-   furhtermore, all these cases have negative taxes, as well as negative tips. from a business
+   Furhtermore, all these cases have negative taxes, as well as negative tips. From a business
    sense, we do not want our customers to give negative tips. One last noticeable point here
    is that all /trip_distance/ entries here are less than a mile, but there was a 718 hour long
    ride! these cases are strange and few, we throw them away.
 
-   after all this cleaning, data looks much better, but we still have negatives in /tip_amount/,
+   After all this cleaning, data looks much better, but we still have negatives in /tip_amount/,
    /extra/ and /tolls_amount/.
    
-   looking at /tip_amount/, we also see that there are lots of $0 tips. these do not look good
+   Looking at /tip_amount/, we also see that there are lots of $0 tips. These do not look good
    for several reasons:
-   - as far as i am concerned, tipping is /kinda/ required in the US
+   - as far as I am concerned, tipping is /kinda/ required in the US
    - we want our customers to tip, so maybe we need to forego these obvservatios, as they only
      reduce the mean tip, and including them would yield lower predictions.
-   so, for our first model, i am going to throw away $0 or lower tips from the data. time
-   allowing, i might do another run including them. but after these removal we only have
+   So, for our first model, I am going to throw away $0 or lower tips from the data. Time
+   allowing, I might do another run including them. But after these removal we only have
    strange negatives in /extra/, and there are not that many cases.
 
 
 ** more feature extraction
-   when dealing with dates, there is a chance that there are differnces in our data
-   at different time slots. we would not expect the same behavior from people
+   When dealing with dates, there is a chance that there are differnces in our data
+   at different time slots. We would not expect the same behavior from people
    monday at 8 am than saturday at 7 pm. thus it might be interesting to compute
    a couple of time variables, like weekday or hour.
 
-   it would be also interesting to look at the tip over fare ratio, see how much
+   It would be also interesting to look at the tip over fare ratio, see how much
    relative to the total fare people are tipping. 
 
    #+BEGIN_SRC R
@@ -151,11 +151,11 @@
 
    #+END_SRC
 
-   after computing the tip to fare ratio, seems like we still need to do some extra cleaning.
+   After computing the tip to fare ratio, seems like we still need to do some extra cleaning.
    some people are tipping more than they are paying for the ride. this needs extra consideration.
    
 
-*** whats going on with tips greater than the fare amount?
+*** what is going on with tips greater than the fare amount?
     :PROPERTIES:
     :ORDERED:  t
     :END:
@@ -194,7 +194,7 @@
 
       # data %>% transmute(logTipAmount = log(tip_amount)) %>% summary
     #+END_SRC
-    first thing we want to take a look at is the tip distribution, we will look
+    First thing we want to take a look at is the tip distribution, we will look
     at it in the log scale, as it will approximate a normal distribution.
 
     #+attr_html: :width 600px
@@ -202,34 +202,34 @@
     #+NAME:   fig:logTip
     [[./plots/logTipHist.jpg]]
     
-    approximation of a normal might be over stated, but it does not look to bad.
+    Approximation of a normal might be over stated, but it does not look to bad.
     strong peaks at 0 (tip of $1) and below 1.5, roughly arround the mean,
     (tip of about $2) make perfect sense. There is a long tail on the negative
-    side, these are people that are tipping too little. probably they need to
+    side, these are people that are tipping too little. Probably they need to
     be treated too.
 
-    next, we look at the same distribution, but color coding if the tip was
+    Next, we look at the same distribution, but color coding if the tip was
     larger than the actual fare in red (generous tip), and blue otherwise
-    (standard tip)
+    (standard tip).
         
     #+attr_html: :width 600px
     #+CAPTION: Log-tip histogram by class of tip
     #+NAME:   fig:logTipGenerous
     [[./plots/logTipGenerousHist.jpg]]
     
-    we see no noticiable behaviour on this scale, which means that generous tips are
-    rather rare. so we probably need to look at the densities rahter than counts.
+    We see no noticiable behaviour on this scale, which means that generous tips are
+    rather rare. So we probably need to look at the densities rahter than counts.
     
     #+attr_html: :width 600px
     #+CAPTION: Log-tip density histogram by class of tip
     #+NAME:   fig:logTipGenerousFrequency
     [[./plots/logTipGenerousFrequencyHist.jpg]]
 
-    this looks interesting, the blue distribution looks similar to the first plot,
+    This looks interesting, the blue distribution looks similar to the first plot,
     but generous tips have a higher mean and standard distribution than standard
     tips.
 
-    in order to have a better understanding of the data, and figure out what to do
+    In order to have a better understanding of the data, and figure out what to do
     with these obvservations, we will compare them with the fee amount.
 
     #+BEGIN_SRC R
@@ -277,9 +277,9 @@
     #+NAME:   fig:fareTipScatter
     [[./plots/fareTipPlot.jpg]]
 
-    in this plot we can notice that tips of over $100 tend to be clustered
-    under $50 fares. filtering out tips over $100 might be a good compromise
-    solution to clean the /tip_amount/ variable. filtering tips of over $200
+    In this plot we can notice that tips of over $100 tend to be clustered
+    under $50 fares. Filtering out tips over $100 might be a good compromise
+    solution to clean the /tip_amount/ variable. Filtering tips of over $200
     might be a better choice, but once again, i am taking into consideration
     hardware restrictions.
 
@@ -288,10 +288,10 @@
     #+NAME:   fig:logFare
     [[./plots/logFareTipPlot.jpg]]
 
-    in the log scale, there is a clearer positive correlation betweem the two
+    In the log scale, there is a clearer positive correlation betweem the two
     variables.
 
-    the next two plots display the scatterplot of log tip vs log fares under two
+    The next two plots display the scatterplot of log tip vs log fares under two
     filter approaches: 1) removing all tips greater than the fares, 2) removing
     tips over $100. The latter approach seems more sensible, as it mantains better
     the original distribution of the data. but maybe this is a none issue. 
@@ -401,18 +401,18 @@
 
    #+END_SRC
 
-   the following plot showcases the distribution of tips by the passenger
+   The following plot showcases the distribution of tips by the passenger
    count, tip's distribution does not change much across this variable,
-   other than the upper tain being slightly shorter when 2 or more passengers.
+   other than the upper tail being slightly shorter when 2 or more passengers.
     #+attr_html: :width 600px
    #+CAPTION: Log-tip distribution by number of passengers
     #+NAME:   fig:passengerTipBox
    [[./plots/passengerTipBox.jpg]]
 
 
-    next two plots display tip's distribution for the time variables computed
+    Next two plots display tip's distribution for the time variables computed
     before. There is no noticiable difference in the tip's distribution,
-    other than on work days, the upper tail is fatter. these variables might
+    other than on work days, the upper tail is fatter. These variables might
     not be that interesting when modeling.
     #+attr_html: :width 600px
     #+CAPTION: Log-tip density histogram by day type
@@ -425,9 +425,9 @@
     #+NAME:   fig:dayPeriodTipDensityHist
    [[./plots/dayPeriodTipDensityHist.jpg]]
 
-    next plot displays tip's density by each of the payment types.
-    people paying cash (coded as 2) seem to always give a $1 tip.
-    given the little amount of customers not using credit card, this
+    Next plot displays tip's density by each of the payment types.
+    People paying cash (coded as 2) seem to always give a $1 tip.
+    Given the little amount of customers not using credit card, this
     variable will not be used in the model.
 
     #+attr_html: :width 600px
@@ -435,17 +435,17 @@
     #+NAME:   fig:paymentTipDensityHist
     [[./plots/paymentTipDensityHist.jpg]]
 
-    next plot displays tip's density on the cases where, as far as i have
+    Next plot displays tip's density on the cases where, as far as I have
     understood, the driver was asked to wait somewhere mid ride.
-    in this case, when the driver was asked to wait, there is a noticeable
-    bimodality in the tips given. this is an interesting property.
+    In this case, when the driver was asked to wait, there is a noticeable
+    bimodality in the tips given. This is an interesting property.
     #+attr_html: :width 600px
     #+CAPTION: Log-tip density histogram by store flag
     #+NAME:   fig:storeCodePeriodTipDensityHist
     [[./plots/storeCodeTipDensityHist.jpg]]
     
-    next plot displays tip's density for each of the rate codes.
-    when this variable is set to 1, the standard rate applies, other
+    Next plot displays tip's density for each of the rate codes.
+    When this variable is set to 1, the standard rate applies, other
     cases are trips involving either airports or outer neighborhoods of
     the city. there is a noticeable difference in the distribution between
     the standard rate and all others.
@@ -455,21 +455,21 @@
     [[./plots/rateCodeTipDensityHist.jpg]]
 
     
-    next two plots help understand tip's relation with /trip_distance/.
-    first we look at the log-trip-distance histogram.
+    Next two plots help understand tip's relation with /trip_distance/.
+    First we look at the log-trip-distance histogram.
     #+attr_html: :width 600px
     #+CAPTION: Log-trip_distance histogram
     #+NAME:   fig:logTripDistanceHist
     [[./plots/logTripDistanceHist.jpg]]
 
-    second we look at the log-tip vs log-distance, and notice strong
+    Second we look at the log-tip vs log-distance, and notice strong
     positive correlation.
     #+attr_html: :width 600px
     #+CAPTION: Log-tip vs log-distance scatterplot
     #+NAME:   fig:distanceTipPlot
     [[./plots/distanceTipPlot.jpg]]
 
-    next two plots look at the /tolls_amount/ variable. most rides did not
+    Next two plots look at the /tolls_amount/ variable. Most rides did not
     involve a toll, but in the following scatterplot, it is noticeable
     that there is some positive correlation when tolls were paid.
     #+attr_html: :width 600px
@@ -477,22 +477,22 @@
     #+NAME:   fig: tollsTipPlot
     [[./plots/tollsTipPlot.jpg]]
 
-    as such, a more sensible variable to include in a model would be a dummy
-    indicating wheather a toll was paid. next plot displays there is a
+    As such, a more sensible variable to include in a model would be a dummy
+    indicating wheather a toll was paid. Next plot displays there is a
     noticeable difference in tip's distribution when a toll is paid.
     #+attr_html: :width 600px
     #+CAPTION: Log-tip density histogram by wheather a toll was paid
     #+NAME:   fig:tollsTipDensityHist
     [[./plots/tollsTipDensityHist.jpg]]
 
-    next two plots help understand tip's relation with /rideTime/.
-    first we look at the log-rideTime histogram.
+    Next two plots help understand tip's relation with /rideTime/.
+    First we look at the log-rideTime histogram.
     #+attr_html: :width 600px
     #+CAPTION: Log-tip ride time histogram
     #+NAME:   fig:dayPeriodTipDensityHist    
     [[./plots/rideTimeHist.jpg]]
     
-    finally we look at tip's correlation with the former variable, again,
+    Finally we look at tip's correlation with the former variable, again,
     strong and positive.
     #+attr_html: :width 600px
     #+CAPTION: Log-tip vs log-ride-time scatterplot
@@ -502,10 +502,10 @@
 
 ** spatial visualizations
 
-   finally, we are going to take a look at the spatial distributions of the data.
+   Finally, we are going to take a look at the spatial distributions of the data.
 
-   the next two plots showcase the number of trips by pick up and drop off zones.
-   other than some key spots, the number of trips, seems to be evenly distriubted
+   The next two plots showcase the number of trips by pick up and drop off zones.
+   Other than some key spots, the number of trips, seems to be evenly distriubted
    across the map.
 
    #+BEGIN_SRC R
@@ -635,14 +635,14 @@
 
    #+END_SRC 
 
-   in the next two plots, the median tip (the median is choosen over the mean
-   to mitigate the effect of outliers) by pick up and drop off zone. by pick up
+   In the next two plots, the median tip (the median is choosen over the mean
+   to mitigate the effect of outliers) by pick up and drop off zone. By pick up
    zone, the tips seem to be more evenly distributed, while by drop off zone,
-   there seems to be more difference among taxi zones. furthermore, by pick up
+   there seems to be more difference among taxi zones. Furthermore, by pick up
    zone, the median tip is truncated at $20, as there are some strong outliers,
    that would distort the plot and show even less difference between the zones.
 
-   with this information, when it comes to modelling, seems like drop off, rather
+   With this information, when it comes to modelling, seems like drop off, rather
    than pick up, will be more interisting. also, there are some empty regions in the
    pick up map.
 
@@ -703,26 +703,26 @@
    [[./plots/pickupTipMap.jpg]]
 
 
-* modelling tips
+* Modelling tips
 
-** a note on accuracy metrics
-   both the root mean squared error (RMSE) and mean absolute precentage
+** A note on accuracy metrics
+   Both the root mean squared error (RMSE) and mean absolute precentage
    error (MAPE) are used to evaluate the models.
-   for all the presented models, RMSE ranges between $1.25 and $1.4, while
+   For all the presented models, RMSE ranges between $1.25 and $1.4, while
    MAPE is between 0.4% and 0.5%.
-   the mean tip is $2.5 dollars, with a $2.4 standard deviation. all this can
+   The mean tip is $2.5 dollars, with a $2.4 standard deviation. all this can
    be interpreted as: the models tend to give predictions that are about $1.3 off.
-   these results are as bad they can be. i am however conviced that these kind of
+   these results are as bad they can be. I am however conviced that these kind of
    accuracy metrics are also quite bad at evaluating the performance of
    the models in our particular business case, specially considering how noisy
    are the relationships in the data.
-   are we more interested in recommending to the customer the actual amount
+   Are we more interested in recommending to the customer the actual amount
    she is going to tip, or are we interested in providing her a summary of what
-   other customers in similar situations? i personally believe the later is more
-   interesting. as such, models will be evaluated plotting the distributions of the
+   other customers in similar situations? I personally believe the later is more
+   interesting. As such, models will be evaluated plotting the distributions of the
    actual data as well as the predictions given by the model.
 
-** linear models
+** Linear models
    #+BEGIN_SRC R
      library(tidyverse)
      library(reshape2)
@@ -784,7 +784,7 @@
          plot
      }
 
-     ##  mutate and select variables to fit             
+     ## mutate and select variables to fit             
      ## dataToFit <- data %>%
      ##     filter(trip_distance > 0) %>% 
      ##     ## change numeric variables
@@ -801,7 +801,7 @@
      ##     select(
      ##         trip_distance, fare_amount, tip_amount, rideTime,
      ##         passenger_count, RatecodeID, store_and_fwd_flag,
-     ##         weekEnd, tollPaid, borough)
+     ##         weekEnd, tollPaid, borough, payment_type)
      ## dataToFit %>% saveRDS("dataToFit.rds")
      dataToFit <- readRDS("dataToFit.rds")
      ## split data in train and test sets
@@ -811,7 +811,7 @@
      ## set the seed to make your partition reproducible
      set.seed(123)
      trainIndex <- sample(seq_len(nrow(dataToFit)), size = trainSize)
-
+     dataToFit %>% head
      train <- dataToFit[trainIndex, ]
      test <- dataToFit[-trainIndex, ]
 
@@ -876,13 +876,25 @@
                     data = train, weights = discreteTipWeight[trainIndex])
 
      evaluation5 <- model5 %>% evaluation(test)
-     posteriorPredictive5 <- posteriorPredictivePlot(evaluation5,
-                                                     "evaluation5PosteriorPredictive.jpg")
+     posteriorPredictive5 <- posteriorPredictivePlot(
+         evaluation5,
+         "evaluation5PosteriorPredictive.jpg")
+
+     model6 <- lmer(tip_amount ~ -1 +
+                        (1 | RatecodeID) + (1 | tollPaid) + (1 | store_and_fwd_flag) +
+                        fare_amount +
+                        (1 + fare_amount | payment_type),
+                    data = train, weights = discreteTipWeight[trainIndex])
+
+     evaluation6 <- model6 %>% evaluation(test)
+     posteriorPredictive6 <- posteriorPredictivePlot(
+         evaluation6,
+         "evaluation6PosteriorPredictive.jpg")
 
    #+END_SRC
 
-   our first linear model is fitted with only the /borough/ and /RatecodeID/
-   dummy variables. this fit is quite bad, but is here just to find out how
+   Our first linear model is fitted with only the /borough/ and /RatecodeID/
+   dummy variables. This fit is quite bad, but is here just to find out how
    this variables are effecting the model.
 
     #+attr_html: :width 600px
@@ -890,16 +902,16 @@
    #+NAME:   fig:evaluation0PosteriorPredictivePlot
    [[./plots/evaluation0PosteriorPredictive.jpg]]
    
-   the next two models include /trip_distance/ as well as /fare_amount/ in
-   logarithms and normalized. as dummy variables /RatecodeID/, /tollPaid/,
+   The next two models include /trip_distance/ as well as /fare_amount/ in
+   logarithms and normalized. As dummy variables /RatecodeID/, /tollPaid/,
    /store_and_fwd_flag/ and drop off /borough/ are selected as they are a
-   subset is representative of all the discrete variables availabel. a better
+   subset is representative of all the discrete variables availabel. A better
    approach would have been to take all the discrete variables, and transform
    with PCA, to avoid the dimensionality problem that justified choosing only
-   a subset. on the other hand, the implemented approach improves the
+   a subset. On the other hand, the implemented approach improves the
    interpretability of the models.
 
-   this next plot displays the results of a simple linear regression.
+   This next plot displays the results of a simple linear regression.
    the on first sight, it is obvious that the models is doing a good job
    of approximating the general distribution, but seems to have problems
    picking up the spikes that are present on the round tips (tips of $1, $2, etc)
@@ -910,18 +922,18 @@
    #+NAME:   fig:evaluation1PosteriorPredictivePlot
    [[./plots/evaluation1PosteriorPredictive.jpg]]
 
-   the most interesting failure of the previous model would be the round tips.
-   first, some clients seem to be giving a tip of $1 regardless of other
-   characteristics of the trip. furthermore, there also seems to be a tendency
+   The most interesting failure of the previous model would be the round tips.
+   First, some clients seem to be giving a tip of $1 regardless of other
+   characteristics of the trip. Furthermore, there also seems to be a tendency
    to give round tips.
-   to approximate this behaviour, the next model is a weighted linear model,
-   were the round values have more weight than the remaining. as such, the
+   To approximate this behaviour, the next model is a weighted linear model,
+   were the round values have more weight than the remaining. As such, the
    predictive posterior of this model is tighter to the original data:
    first, it is approximates the $2 spike quite well.
-   but it also generates two spikes between the actuals $1 and $2. this is
+   But it also generates two spikes between the actuals $1 and $2. This is
    interesting, because it indicates that we do not have enough information
    to approximate linearly the spike at $1 and the remaining error at the
-   spike at $2. this would be probably one of the most interesting models to
+   spike at $2. This would be probably one of the most interesting models to
    actually implement in a production evironment.
 
     #+attr_html: :width 600px
@@ -937,12 +949,12 @@
    #+NAME:   fig:evaluation3PosteriorPredictivePlot
    [[./plots/evaluation3PosteriorPredictive.jpg]]
 
-   finally, in order to approximate better some non linearities, the
+   Finally, in order to approximate better some non linearities, the
    previous models are extended with interaction terms between /borough/
-   and /fare_amount/ in a mixed linear model. this is, we allow that for
+   and /fare_amount/ in a mixed linear model. This is, we allow that for
    each /borough/, the /fare_amount/ variable has a different slope term.
-   as in the previous linear model, both regular and weighted linear models
-   are fitted. the fit is quite similar than before, but this model seems
+   As in the previous linear model, both regular and weighted linear models
+   are fitted. The fit is quite similar than before, but this model seems
    to better approximate the spikyness of the data.
 
     #+attr_html: :width 600px
@@ -956,7 +968,7 @@
    [[./plots/evaluation5PosteriorPredictive.jpg]]
 
    
-** random forest
+** Random forest
    #+BEGIN_SRC R
      library(tidyverse)
      library(reshape2)
@@ -1049,16 +1061,16 @@
 
    #+END_SRC
 
-   here we have taken a more /machine learning/ approach with hyperparameter
-   tunning. we have computed several random forest, with different number
-   of nodes and sizes of those nodes. this approach was to strike a balance
+   Here we have taken a more /machine learning/ approach with hyperparameter
+   tunning. We have computed several random forest, with different number
+   of nodes and sizes of those nodes. This approach was to strike a balance
    between the approximation between the fitting of the right tail and the
-   fitting of the spikyness arround the mode. only four of the models
+   fitting of the spikyness arround the mode. Only four of the models
    are displayed, showcasing these effects. 
-   models that seem good at approximating the tail, tend to fail at the mode,
+   Models that seem good at approximating the tail, tend to fail at the mode,
    and when the mode is nicely approximated, these the tail is underfitted.
 
-    #+attr_html: :width 600px
+   #+attr_html: :width 600px
    #+CAPTION: Posterior predictive evaluation with 100 nodes of size 10000
    #+NAME:   fig:evaluation0PosteriorPredictivePlot
    [[./plots/rfNodesize10000Maxnode100PosteriorPredictive.jpg]]
@@ -1082,60 +1094,60 @@
 
 
 
-** choosing a model
-   even though, the better accuracy metrics were obtained in some of the
+** Choosing a model
+   Even though, the better accuracy metrics were obtained in some of the
    random forest, i would choose the weighted mixed linear model.
-   the main reason is because the posterior predictive distribution
-   has a tighter fit to the data. i believe that most of the failure of the
+   The main reason is because the posterior predictive distribution
+   has a tighter fit to the data. I believe that most of the failure of the
    model is due to the spike at $1, which is hard to approximate, and as such,
    i am not strongly concerned with the poor metrics.
-   other nice feature of linear models is they are easy to understand, and this
+   Other nice feature of linear models is they are easy to understand, and this
    makes them better thought tools to reason about our data and extend the analysis.
-   for example, i think an interesting next step would be to A/B test different
-   recommendations on the clients by their drop off destination. another
+   For example, I think an interesting next step would be to A/B test different
+   recommendations on the clients by their drop off destination. Another
    interesting project would be to evaluate the changes of the tips provided,
    given the difference between the estimated charge that is usually provided
    when contracting the ride and the actual fare amount.
-   this would allow to figure out recomendations and figures to give the
-   customers in order to maximize tips for driver satisfaction. in order to
+   This would allow to figure out recomendations and figures to give the
+   customers in order to maximize tips for driver satisfaction. In order to
    carry out these experiments, having a model that has clear effects for
    all the variables is a strong feature.
 
-   the main caveat of this model, is that is linear. as such, any non linear
-   patterns in the data are not going to be well approximated. furthermore,
+   The main caveat of this model, is that is linear. As such, any non linear
+   patterns in the data are not going to be well approximated. Furthermore,
    i have been working under the assumption that the posterior predictive
-   distribution is a good metric for evaluation. if we were just interested
+   distribution is a good metric for evaluation. If we were just interested
    in accuracy performance, this model would be a bad choice.
 
-   some of the things to improve in the model would be the spatial effects.
-   given the limited computing power i have. these effects were approximated
+   Some of the things to improve in the model would be the spatial effects.
+   given the limited computing power I have. These effects were approximated
    using borough dummies, but a better approach would be to use the full 2k
-   taxi zones. furthermore, it would be interesting to implement some of the
+   taxi zones. Furthermore, it would be interesting to implement some of the
    models proposed [[https://mc-stan.org/users/documentation/case-studies/icar_stan.html][here]], as from the descriptive plots it is made obvious that
    the distribution of tips changes by zone.
-   other interesting extension, with more months, would be to include month
+   Other interesting extension, with more months, would be to include month
    dummies, in order to evaluate whether tips as higher on christmas, during
    months with high tourism, etc.
 
-   finally, it would be quite interesting to implement a mixture model,
+   Finally, it would be quite interesting to implement a mixture model,
    were the tips are either distributed by a gamma (as we did in the model)
-   or a multinomial distribution of the values $1, $2, $3, $5. this would
+   or a multinomial distribution of the values $1, $2, $3, $5. This would
    nicely fit the actual data.
 
    
-** how to implement as an API
-   in order to implement this model as an API, i think two components would
+** How to implement as an API
+   In order to implement this model as an API, I think two components would
    be necessary:
    - a service that would provide the recomendation based on the ride features
    - a backend that would update the model with the new available data
 
-   for the first component, we would need a function that, provided the
+   For the first component, we would need a function that, provided the
    ride characteristics, would read the current state of the fitted model, and
    provide the recommendation.
-   for the second component, whenever an update of the model is required, would
+   For the second component, whenever an update of the model is required, would
    re-fit the data and serve the new model to the first component.
    
-   the most efficient way to do this would be as two concurrent processes, with
+   The most efficient way to do this would be as two concurrent processes, with
    the first component activating when new models are fitted or recommendations
    are required.
 
