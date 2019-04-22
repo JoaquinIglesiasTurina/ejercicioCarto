@@ -30,6 +30,10 @@
 
 
 * Exploratory data analysis
+
+  In this section I will analyze the data set, and explain the core
+  features and trends in the data.
+
 ** cleaning data
    There are some strange things in the data. These strange cases will be removed.
    It would be /more correct/ to leave them as missing values and make some mean
@@ -704,6 +708,11 @@
 
 
 * Modelling tips
+
+  In this section I will build a model to predict the tip given
+  for a taxi ride. The main objective of this model is to give
+  users a recommendation based on what amount to tip, based on
+  what clients with similar ride characteristics tipped
 
 ** A note on accuracy metrics
    Both the root mean squared error (RMSE) and mean absolute precentage

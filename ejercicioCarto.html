@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-04-22 lun 08:37 -->
+<!-- 2019-04-22 lun 08:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -233,26 +233,26 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org4293c06">1. Download data</a></li>
-<li><a href="#org54fd9d7">2. Exploratory data analysis</a>
+<li><a href="#org56bb4ff">1. Download data</a></li>
+<li><a href="#orgca3a8ab">2. Exploratory data analysis</a>
 <ul>
-<li><a href="#org2a0e489">2.1. cleaning data</a></li>
-<li><a href="#orgcb2ea71">2.2. more feature extraction</a>
+<li><a href="#orgc49a0b1">2.1. cleaning data</a></li>
+<li><a href="#org960263b">2.2. more feature extraction</a>
 <ul>
-<li><a href="#org5357620">2.2.1. what is going on with tips greater than the fare amount?</a></li>
+<li><a href="#org62615bd">2.2.1. what is going on with tips greater than the fare amount?</a></li>
 </ul>
 </li>
-<li><a href="#orga702cbd">2.3. visualizations</a></li>
-<li><a href="#orgccf5147">2.4. spatial visualizations</a></li>
+<li><a href="#orgdd1052f">2.3. visualizations</a></li>
+<li><a href="#org4ba29bf">2.4. spatial visualizations</a></li>
 </ul>
 </li>
-<li><a href="#orgbd6b101">3. Modelling tips</a>
+<li><a href="#org85ffd1b">3. Modelling tips</a>
 <ul>
-<li><a href="#org4079f7d">3.1. A note on accuracy metrics</a></li>
-<li><a href="#org7719ae6">3.2. Linear models</a></li>
-<li><a href="#org968259c">3.3. Random forest</a></li>
-<li><a href="#orgea0bdad">3.4. Choosing a model</a></li>
-<li><a href="#org940d84c">3.5. How to implement as an API</a></li>
+<li><a href="#org2b96d98">3.1. A note on accuracy metrics</a></li>
+<li><a href="#orga455eae">3.2. Linear models</a></li>
+<li><a href="#org419679f">3.3. Random forest</a></li>
+<li><a href="#org527c7d2">3.4. Choosing a model</a></li>
+<li><a href="#org853d9f7">3.5. How to implement as an API</a></li>
 </ul>
 </li>
 </ul>
@@ -260,8 +260,8 @@ for the JavaScript code in this tag.
 </div>
 
 
-<div id="outline-container-org4293c06" class="outline-2">
-<h2 id="org4293c06"><span class="section-number-2">1</span> Download data</h2>
+<div id="outline-container-org56bb4ff" class="outline-2">
+<h2 id="org56bb4ff"><span class="section-number-2">1</span> Download data</h2>
 <div class="outline-text-2" id="text-1">
 <div class="org-src-container">
 <pre class="src src-R"><span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"tidyverse"</span>)
@@ -292,12 +292,17 @@ data <span style="color: #70c0b1;">%&gt;%</span> reduce(<span style="color: #c39
 
 
 
-<div id="outline-container-org54fd9d7" class="outline-2">
-<h2 id="org54fd9d7"><span class="section-number-2">2</span> Exploratory data analysis</h2>
+<div id="outline-container-orgca3a8ab" class="outline-2">
+<h2 id="orgca3a8ab"><span class="section-number-2">2</span> Exploratory data analysis</h2>
 <div class="outline-text-2" id="text-2">
+<p>
+In this section I will analyze the data set, and explain the core
+features and trends in the data.
+</p>
 </div>
-<div id="outline-container-org2a0e489" class="outline-3">
-<h3 id="org2a0e489"><span class="section-number-3">2.1</span> cleaning data</h3>
+
+<div id="outline-container-orgc49a0b1" class="outline-3">
+<h3 id="orgc49a0b1"><span class="section-number-3">2.1</span> cleaning data</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 There are some strange things in the data. These strange cases will be removed.
@@ -408,8 +413,8 @@ strange negatives in <i>extra</i>, and there are not that many cases.
 </div>
 
 
-<div id="outline-container-orgcb2ea71" class="outline-3">
-<h3 id="orgcb2ea71"><span class="section-number-3">2.2</span> more feature extraction</h3>
+<div id="outline-container-org960263b" class="outline-3">
+<h3 id="org960263b"><span class="section-number-3">2.2</span> more feature extraction</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 When dealing with dates, there is a chance that there are differnces in our data
@@ -460,8 +465,8 @@ some people are tipping more than they are paying for the ride. this needs extra
 </div>
 
 
-<div id="outline-container-org5357620" class="outline-4">
-<h4 id="org5357620"><span class="section-number-4">2.2.1</span> what is going on with tips greater than the fare amount?</h4>
+<div id="outline-container-org62615bd" class="outline-4">
+<h4 id="org62615bd"><span class="section-number-4">2.2.1</span> what is going on with tips greater than the fare amount?</h4>
 <div class="outline-text-4" id="text-2-2-1">
 <div class="org-src-container">
 <pre class="src src-R"><span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"tidyverse"</span>)
@@ -505,7 +510,7 @@ at it in the log scale, as it will approximate a normal distribution.
 </p>
 
 
-<div id="orgfe048c3" class="figure">
+<div id="org4289f2f" class="figure">
 <p><img src="./plots/logTipHist.jpg" alt="logTipHist.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Log-tip histogram</p>
@@ -526,7 +531,7 @@ larger than the actual fare in red (generous tip), and blue otherwise
 </p>
 
 
-<div id="orge04bb91" class="figure">
+<div id="orgcc1859e" class="figure">
 <p><img src="./plots/logTipGenerousHist.jpg" alt="logTipGenerousHist.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Log-tip histogram by class of tip</p>
@@ -538,7 +543,7 @@ rather rare. So we probably need to look at the densities rahter than counts.
 </p>
 
 
-<div id="org2a67d94" class="figure">
+<div id="orgcda61d2" class="figure">
 <p><img src="./plots/logTipGenerousFrequencyHist.jpg" alt="logTipGenerousFrequencyHist.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 3: </span>Log-tip density histogram by class of tip</p>
@@ -597,7 +602,7 @@ ggsave(paste(plotsFolder, <span style="color: #b9ca4a;">"logFareTip100Plot.jpg"<
 </pre>
 </div>
 
-<div id="org60a505f" class="figure">
+<div id="orgcc0fd41" class="figure">
 <p><img src="./plots/fareTipPlot.jpg" alt="fareTipPlot.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 4: </span>fare vs tip scatterplot</p>
@@ -612,7 +617,7 @@ hardware restrictions.
 </p>
 
 
-<div id="org53ac5e4" class="figure">
+<div id="org03b8fca" class="figure">
 <p><img src="./plots/logFareTipPlot.jpg" alt="logFareTipPlot.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 5: </span>log-fare vs log-tip scatterplot</p>
@@ -631,14 +636,14 @@ the original distribution of the data. but maybe this is a none issue.
 </p>
 
 
-<div id="orgc2d5667" class="figure">
+<div id="orgea68bd0" class="figure">
 <p><img src="./plots/logFareTipStandardPlot.jpg" alt="logFareTipStandardPlot.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 6: </span>Log-tip density histogram by class of tip</p>
 </div>
 
 
-<div id="org1fc3669" class="figure">
+<div id="orgdcf6ff4" class="figure">
 <p><img src="./plots/logFareTip100Plot.jpg" alt="logFareTip100Plot.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 7: </span>Log-tip density histogram by class of tip</p>
@@ -648,8 +653,8 @@ the original distribution of the data. but maybe this is a none issue.
 </div>
 
 
-<div id="outline-container-orga702cbd" class="outline-3">
-<h3 id="orga702cbd"><span class="section-number-3">2.3</span> visualizations</h3>
+<div id="outline-container-orgdd1052f" class="outline-3">
+<h3 id="orgdd1052f"><span class="section-number-3">2.3</span> visualizations</h3>
 <div class="outline-text-3" id="text-2-3">
 <div class="org-src-container">
 <pre class="src src-R"><span style="color: #70c0b1;">library</span>(<span style="color: #b9ca4a;">"tidyverse"</span>)
@@ -751,7 +756,7 @@ count, tip's distribution does not change much across this variable,
 other than the upper tail being slightly shorter when 2 or more passengers.
 </p>
 
-<div id="orgf65b568" class="figure">
+<div id="orgb45bf01" class="figure">
 <p><img src="./plots/passengerTipBox.jpg" alt="passengerTipBox.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 8: </span>Log-tip distribution by number of passengers</p>
@@ -765,7 +770,7 @@ other than on work days, the upper tail is fatter. These variables might
 not be that interesting when modeling.
 </p>
 
-<div id="org33a9102" class="figure">
+<div id="org6e9e8fb" class="figure">
 <p><img src="./plots/weekendTipDensityHist.jpg" alt="weekendTipDensityHist.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 9: </span>Log-tip density histogram by day type</p>
@@ -773,7 +778,7 @@ not be that interesting when modeling.
 
 
 
-<div id="org1a64a7d" class="figure">
+<div id="org51379f3" class="figure">
 <p><img src="./plots/dayPeriodTipDensityHist.jpg" alt="dayPeriodTipDensityHist.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 10: </span>Log-tip density histogram by time of the day</p>
@@ -787,7 +792,7 @@ variable will not be used in the model.
 </p>
 
 
-<div id="orgae0330f" class="figure">
+<div id="org54a317d" class="figure">
 <p><img src="./plots/paymentTipDensityHist.jpg" alt="paymentTipDensityHist.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 11: </span>Log-tip density histogram by payment type</p>
@@ -800,7 +805,7 @@ In this case, when the driver was asked to wait, there is a noticeable
 bimodality in the tips given. This is an interesting property.
 </p>
 
-<div id="org7b94c55" class="figure">
+<div id="org6111925" class="figure">
 <p><img src="./plots/storeCodeTipDensityHist.jpg" alt="storeCodeTipDensityHist.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 12: </span>Log-tip density histogram by store flag</p>
@@ -814,7 +819,7 @@ the city. there is a noticeable difference in the distribution between
 the standard rate and all others.
 </p>
 
-<div id="orge6c4fbc" class="figure">
+<div id="orgdcfff40" class="figure">
 <p><img src="./plots/rateCodeTipDensityHist.jpg" alt="rateCodeTipDensityHist.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 13: </span>Log-tip density histogram by rate type</p>
@@ -826,7 +831,7 @@ Next two plots help understand tip's relation with <i>trip_distance</i>.
 First we look at the log-trip-distance histogram.
 </p>
 
-<div id="org4ce67e8" class="figure">
+<div id="org13bced8" class="figure">
 <p><img src="./plots/logTripDistanceHist.jpg" alt="logTripDistanceHist.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 14: </span>Log-trip_distance histogram</p>
@@ -837,7 +842,7 @@ Second we look at the log-tip vs log-distance, and notice strong
 positive correlation.
 </p>
 
-<div id="orgb8ef582" class="figure">
+<div id="orgcb3f23c" class="figure">
 <p><img src="./plots/distanceTipPlot.jpg" alt="distanceTipPlot.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 15: </span>Log-tip vs log-distance scatterplot</p>
@@ -849,7 +854,7 @@ involve a toll, but in the following scatterplot, it is noticeable
 that there is some positive correlation when tolls were paid.
 </p>
 
-<div id="orgba0eba5" class="figure">
+<div id="org5006e10" class="figure">
 <p><img src="./plots/tollsTipPlot.jpg" alt="tollsTipPlot.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 16: </span>Log-tip vs tolls_amount scatterplot</p>
@@ -861,7 +866,7 @@ indicating wheather a toll was paid. Next plot displays there is a
 noticeable difference in tip's distribution when a toll is paid.
 </p>
 
-<div id="org9442314" class="figure">
+<div id="orgfbef553" class="figure">
 <p><img src="./plots/tollsTipDensityHist.jpg" alt="tollsTipDensityHist.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 17: </span>Log-tip density histogram by wheather a toll was paid</p>
@@ -872,7 +877,7 @@ Next two plots help understand tip's relation with <i>rideTime</i>.
 First we look at the log-rideTime histogram.
 </p>
 
-<div id="orgb45f565" class="figure">
+<div id="orge41a038" class="figure">
 <p><img src="./plots/rideTimeHist.jpg" alt="rideTimeHist.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 18: </span>Log-tip ride time histogram</p>
@@ -883,7 +888,7 @@ Finally we look at tip's correlation with the former variable, again,
 strong and positive.
 </p>
 
-<div id="orgacf3fdf" class="figure">
+<div id="org9d110fd" class="figure">
 <p><img src="./plots/rideTipPlot.jpg" alt="rideTipPlot.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 19: </span>Log-tip vs log-ride-time scatterplot</p>
@@ -892,8 +897,8 @@ strong and positive.
 </div>
 
 
-<div id="outline-container-orgccf5147" class="outline-3">
-<h3 id="orgccf5147"><span class="section-number-3">2.4</span> spatial visualizations</h3>
+<div id="outline-container-org4ba29bf" class="outline-3">
+<h3 id="org4ba29bf"><span class="section-number-3">2.4</span> spatial visualizations</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 Finally, we are going to take a look at the spatial distributions of the data.
@@ -945,7 +950,7 @@ ggsave(paste(plotsFolder, <span style="color: #b9ca4a;">"pickupTripsMap.jpg"</sp
 </div>
 
 
-<div id="org1af3e22" class="figure">
+<div id="orgba9ca05" class="figure">
 <p><img src="./plots/pickupTripsMap.jpg" alt="pickupTripsMap.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 20: </span>Trip count by taxi pickup zone</p>
@@ -992,7 +997,7 @@ ggsave(paste(plotsFolder, <span style="color: #b9ca4a;">"destinationTripsMap.jpg
 </div>
 
 
-<div id="org50469bc" class="figure">
+<div id="orgb637419" class="figure">
 <p><img src="./plots/destinationTripsMap.jpg" alt="destinationTripsMap.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 21: </span>Trip count by taxi dropoff zone</p>
@@ -1055,7 +1060,7 @@ pick up map.
 </p>
 
 
-<div id="orgbcc87a2" class="figure">
+<div id="org06ee90a" class="figure">
 <p><img src="./plots/destinationTipMap.jpg" alt="destinationTipMap.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 22: </span>Median tip by taxi dropoff zone</p>
@@ -1109,7 +1114,7 @@ ggsave(paste(plotsFolder, <span style="color: #b9ca4a;">"pickupTipMap.jpg"</span
 </div>
 
 
-<div id="orgc9b2681" class="figure">
+<div id="org308347d" class="figure">
 <p><img src="./plots/pickupTipMap.jpg" alt="pickupTipMap.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 23: </span>Median tip by taxi pickup zone</p>
@@ -1119,12 +1124,19 @@ ggsave(paste(plotsFolder, <span style="color: #b9ca4a;">"pickupTipMap.jpg"</span
 </div>
 
 
-<div id="outline-container-orgbd6b101" class="outline-2">
-<h2 id="orgbd6b101"><span class="section-number-2">3</span> Modelling tips</h2>
+<div id="outline-container-org85ffd1b" class="outline-2">
+<h2 id="org85ffd1b"><span class="section-number-2">3</span> Modelling tips</h2>
 <div class="outline-text-2" id="text-3">
+<p>
+In this section I will build a model to predict the tip given
+for a taxi ride. The main objective of this model is to give
+users a recommendation based on what amount to tip, based on
+what clients with similar ride characteristics tipped
+</p>
 </div>
-<div id="outline-container-org4079f7d" class="outline-3">
-<h3 id="org4079f7d"><span class="section-number-3">3.1</span> A note on accuracy metrics</h3>
+
+<div id="outline-container-org2b96d98" class="outline-3">
+<h3 id="org2b96d98"><span class="section-number-3">3.1</span> A note on accuracy metrics</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 Both the root mean squared error (RMSE) and mean absolute precentage
@@ -1146,8 +1158,8 @@ actual data as well as the predictions given by the model.
 </div>
 </div>
 
-<div id="outline-container-org7719ae6" class="outline-3">
-<h3 id="org7719ae6"><span class="section-number-3">3.2</span> Linear models</h3>
+<div id="outline-container-orga455eae" class="outline-3">
+<h3 id="orga455eae"><span class="section-number-3">3.2</span> Linear models</h3>
 <div class="outline-text-3" id="text-3-2">
 <div class="org-src-container">
 <pre class="src src-R"><span style="color: #70c0b1;">library</span>(tidyverse)
@@ -1327,7 +1339,7 @@ this variables are effecting the model.
 </p>
 
 
-<div id="org6100ac0" class="figure">
+<div id="orgabd27b6" class="figure">
 <p><img src="./plots/evaluation0PosteriorPredictive.jpg" alt="evaluation0PosteriorPredictive.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 24: </span>Posterior predictive evaluation</p>
@@ -1353,7 +1365,7 @@ as well as the left tail.
 </p>
 
 
-<div id="org2cd0cce" class="figure">
+<div id="orgc3d3a7f" class="figure">
 <p><img src="./plots/evaluation1PosteriorPredictive.jpg" alt="evaluation1PosteriorPredictive.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 25: </span>Posterior predictive evaluation</p>
@@ -1376,7 +1388,7 @@ actually implement in a production evironment.
 </p>
 
 
-<div id="orgcfee121" class="figure">
+<div id="org64c8b16" class="figure">
 <p><img src="./plots/evaluation2PosteriorPredictive.jpg" alt="evaluation2PosteriorPredictive.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 26: </span>Posterior predictive evaluation</p>
@@ -1388,7 +1400,7 @@ regularization. this model fits the data quite poorly.
 </p>
 
 
-<div id="orgf81bee6" class="figure">
+<div id="org4733bcd" class="figure">
 <p><img src="./plots/evaluation3PosteriorPredictive.jpg" alt="evaluation3PosteriorPredictive.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 27: </span>Posterior predictive evaluation</p>
@@ -1405,14 +1417,14 @@ to better approximate the spikyness of the data.
 </p>
 
 
-<div id="orge20e154" class="figure">
+<div id="org0c5bfd6" class="figure">
 <p><img src="./plots/evaluation4PosteriorPredictive.jpg" alt="evaluation4PosteriorPredictive.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 28: </span>Posterior predictive evaluation</p>
 </div>
 
 
-<div id="org91f661f" class="figure">
+<div id="orgc0cacb5" class="figure">
 <p><img src="./plots/evaluation5PosteriorPredictive.jpg" alt="evaluation5PosteriorPredictive.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 29: </span>Posterior predictive evaluation</p>
@@ -1421,8 +1433,8 @@ to better approximate the spikyness of the data.
 </div>
 
 
-<div id="outline-container-org968259c" class="outline-3">
-<h3 id="org968259c"><span class="section-number-3">3.3</span> Random forest</h3>
+<div id="outline-container-org419679f" class="outline-3">
+<h3 id="org419679f"><span class="section-number-3">3.3</span> Random forest</h3>
 <div class="outline-text-3" id="text-3-3">
 <div class="org-src-container">
 <pre class="src src-R"><span style="color: #70c0b1;">library</span>(tidyverse)
@@ -1529,28 +1541,28 @@ and when the mode is nicely approximated, these the tail is underfitted.
 </p>
 
 
-<div id="org18bade4" class="figure">
+<div id="orgb23b696" class="figure">
 <p><img src="./plots/rfNodesize10000Maxnode100PosteriorPredictive.jpg" alt="rfNodesize10000Maxnode100PosteriorPredictive.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 30: </span>Posterior predictive evaluation with 100 nodes of size 10000</p>
 </div>
 
 
-<div id="org4ff2ff4" class="figure">
+<div id="orgd3f3aa5" class="figure">
 <p><img src="./plots/rfNodesize110000Maxnode30PosteriorPredictive.jpg" alt="rfNodesize110000Maxnode30PosteriorPredictive.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 31: </span>Posterior predictive evaluation with 30 nodes of size 110000</p>
 </div>
 
 
-<div id="orgd263730" class="figure">
+<div id="org98ffc70" class="figure">
 <p><img src="./plots/rfNodesize1e+05Maxnode70PosteriorPredictive.jpg" alt="rfNodesize1e+05Maxnode70PosteriorPredictive.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 32: </span>Posterior predictive evaluation with 70 nodes of size 150000</p>
 </div>
 
 
-<div id="orge50d9ee" class="figure">
+<div id="org350c8f7" class="figure">
 <p><img src="./plots/rfNodesize110000Maxnode50PosteriorPredictive.jpg" alt="rfNodesize110000Maxnode50PosteriorPredictive.jpg" width="600px" />
 </p>
 <p><span class="figure-number">Figure 33: </span>Posterior predictive evaluation with 50 nodes of size 11000</p>
@@ -1562,8 +1574,8 @@ and when the mode is nicely approximated, these the tail is underfitted.
 
 
 
-<div id="outline-container-orgea0bdad" class="outline-3">
-<h3 id="orgea0bdad"><span class="section-number-3">3.4</span> Choosing a model</h3>
+<div id="outline-container-org527c7d2" class="outline-3">
+<h3 id="org527c7d2"><span class="section-number-3">3.4</span> Choosing a model</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 Even though, the better accuracy metrics were obtained in some of the
@@ -1615,8 +1627,8 @@ nicely fit the actual data.
 </div>
 
 
-<div id="outline-container-org940d84c" class="outline-3">
-<h3 id="org940d84c"><span class="section-number-3">3.5</span> How to implement as an API</h3>
+<div id="outline-container-org853d9f7" class="outline-3">
+<h3 id="org853d9f7"><span class="section-number-3">3.5</span> How to implement as an API</h3>
 <div class="outline-text-3" id="text-3-5">
 <p>
 In order to implement this model as an API, I think two components would
@@ -1646,7 +1658,7 @@ are required.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: joaquin</p>
-<p class="date">Created: 2019-04-22 lun 08:37</p>
+<p class="date">Created: 2019-04-22 lun 08:42</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

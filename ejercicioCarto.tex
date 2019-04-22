@@ -1,4 +1,4 @@
-% Created 2019-04-22 lun 08:36
+% Created 2019-04-22 lun 08:42
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -31,7 +31,7 @@
 
 
 \section{Download data}
-\label{sec:org57ec86b}
+\label{sec:org8fef7bd}
 
 \begin{verbatim}
 library("tidyverse")
@@ -60,9 +60,13 @@ data %>% reduce(function(x, y) rbind(x, y)) %>% saveRDS("taxiData.rds")
 
 
 \section{Exploratory data analysis}
-\label{sec:org0f5ccff}
+\label{sec:org9d97f93}
+
+In this section I will analyze the data set, and explain the core
+features and trends in the data.
+
 \subsection{cleaning data}
-\label{sec:orgf1d5ade}
+\label{sec:org096b925}
 There are some strange things in the data. These strange cases will be removed.
 It would be \emph{more correct} to leave them as missing values and make some mean
 imputations, but given that
@@ -150,7 +154,7 @@ strange negatives in \emph{extra}, and there are not that many cases.
 
 
 \subsection{more feature extraction}
-\label{sec:org8cfd14f}
+\label{sec:org9b92787}
 When dealing with dates, there is a chance that there are differnces in our data
 at different time slots. We would not expect the same behavior from people
 monday at 8 am than saturday at 7 pm. thus it might be interesting to compute
@@ -193,7 +197,7 @@ some people are tipping more than they are paying for the ride. this needs extra
 
 
 \subsubsection{what is going on with tips greater than the fare amount?}
-\label{sec:orgadc424d}
+\label{sec:org675b2ff}
 \begin{verbatim}
 library("tidyverse")
 library("ggplot2")
@@ -235,7 +239,7 @@ at it in the log scale, as it will approximate a normal distribution.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/logTipHist.jpg}
-\caption{\label{fig:org92d467d}
+\caption{\label{fig:orga1fd2ea}
 Log-tip histogram}
 \end{figure}
 
@@ -252,7 +256,7 @@ larger than the actual fare in red (generous tip), and blue otherwise
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/logTipGenerousHist.jpg}
-\caption{\label{fig:org40a24c1}
+\caption{\label{fig:org4b7957e}
 Log-tip histogram by class of tip}
 \end{figure}
 
@@ -262,7 +266,7 @@ rather rare. So we probably need to look at the densities rahter than counts.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/logTipGenerousFrequencyHist.jpg}
-\caption{\label{fig:org4b3fd62}
+\caption{\label{fig:org91a8b09}
 Log-tip density histogram by class of tip}
 \end{figure}
 
@@ -316,7 +320,7 @@ ggsave(paste(plotsFolder, "logFareTip100Plot.jpg", sep = "/"),  fareTip100Plot)
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/fareTipPlot.jpg}
-\caption{\label{fig:orgcb1bff9}
+\caption{\label{fig:org3d65f2e}
 fare vs tip scatterplot}
 \end{figure}
 
@@ -329,7 +333,7 @@ hardware restrictions.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/logFareTipPlot.jpg}
-\caption{\label{fig:org39ea9f5}
+\caption{\label{fig:orgd288986}
 log-fare vs log-tip scatterplot}
 \end{figure}
 
@@ -344,20 +348,20 @@ the original distribution of the data. but maybe this is a none issue.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/logFareTipStandardPlot.jpg}
-\caption{\label{fig:org22d1ae0}
+\caption{\label{fig:org8b1c348}
 Log-tip density histogram by class of tip}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/logFareTip100Plot.jpg}
-\caption{\label{fig:org07c1870}
+\caption{\label{fig:org161d101}
 Log-tip density histogram by class of tip}
 \end{figure}
 
 
 \subsection{visualizations}
-\label{sec:orgd070d8c}
+\label{sec:org9944dbd}
 \begin{verbatim}
 library("tidyverse")
 library("ggplot2")
@@ -457,7 +461,7 @@ other than the upper tail being slightly shorter when 2 or more passengers.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/passengerTipBox.jpg}
-\caption{\label{fig:org1eb71ca}
+\caption{\label{fig:org004926d}
 Log-tip distribution by number of passengers}
 \end{figure}
 
@@ -469,7 +473,7 @@ not be that interesting when modeling.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/weekendTipDensityHist.jpg}
-\caption{\label{fig:org3148d7c}
+\caption{\label{fig:org2dc1a4d}
 Log-tip density histogram by day type}
 \end{figure}
 
@@ -477,7 +481,7 @@ Log-tip density histogram by day type}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/dayPeriodTipDensityHist.jpg}
-\caption{\label{fig:org0f50b2f}
+\caption{\label{fig:org53e1af9}
 Log-tip density histogram by time of the day}
 \end{figure}
 
@@ -489,7 +493,7 @@ variable will not be used in the model.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/paymentTipDensityHist.jpg}
-\caption{\label{fig:org81c73ef}
+\caption{\label{fig:org99cbaa0}
 Log-tip density histogram by payment type}
 \end{figure}
 
@@ -500,7 +504,7 @@ bimodality in the tips given. This is an interesting property.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/storeCodeTipDensityHist.jpg}
-\caption{\label{fig:org6825764}
+\caption{\label{fig:org4c29f79}
 Log-tip density histogram by store flag}
 \end{figure}
 
@@ -512,7 +516,7 @@ the standard rate and all others.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/rateCodeTipDensityHist.jpg}
-\caption{\label{fig:orgf3c7266}
+\caption{\label{fig:org4240786}
 Log-tip density histogram by rate type}
 \end{figure}
 
@@ -522,7 +526,7 @@ First we look at the log-trip-distance histogram.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/logTripDistanceHist.jpg}
-\caption{\label{fig:org63159d1}
+\caption{\label{fig:orge5fda18}
 Log-trip\_distance histogram}
 \end{figure}
 
@@ -531,7 +535,7 @@ positive correlation.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/distanceTipPlot.jpg}
-\caption{\label{fig:org624efc3}
+\caption{\label{fig:org392ec20}
 Log-tip vs log-distance scatterplot}
 \end{figure}
 
@@ -541,7 +545,7 @@ that there is some positive correlation when tolls were paid.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/tollsTipPlot.jpg}
-\caption{\label{fig:org29ef398}
+\caption{\label{fig:orgc806998}
 Log-tip vs tolls\_amount scatterplot}
 \end{figure}
 
@@ -551,7 +555,7 @@ noticeable difference in tip's distribution when a toll is paid.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/tollsTipDensityHist.jpg}
-\caption{\label{fig:org1f3873f}
+\caption{\label{fig:org7e6f626}
 Log-tip density histogram by wheather a toll was paid}
 \end{figure}
 
@@ -560,7 +564,7 @@ First we look at the log-rideTime histogram.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/rideTimeHist.jpg}
-\caption{\label{fig:orgc384038}
+\caption{\label{fig:org2bec3ee}
 Log-tip ride time histogram}
 \end{figure}
 
@@ -569,13 +573,13 @@ strong and positive.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/rideTipPlot.jpg}
-\caption{\label{fig:orgab92c8d}
+\caption{\label{fig:org3e96d2d}
 Log-tip vs log-ride-time scatterplot}
 \end{figure}
 
 
 \subsection{spatial visualizations}
-\label{sec:org5f9a8bf}
+\label{sec:orgb8b93c5}
 
 Finally, we are going to take a look at the spatial distributions of the data.
 
@@ -624,7 +628,7 @@ ggsave(paste(plotsFolder, "pickupTripsMap.jpg", sep = "/"), pickupTipMap)
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/pickupTripsMap.jpg}
-\caption{\label{fig:org3fe7872}
+\caption{\label{fig:orgee0c997}
 Trip count by taxi pickup zone}
 \end{figure}
 
@@ -670,7 +674,7 @@ ggsave(paste(plotsFolder, "destinationTripsMap.jpg", sep = "/"), destinationTipM
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/destinationTripsMap.jpg}
-\caption{\label{fig:org3bfab40}
+\caption{\label{fig:org8aa1d26}
 Trip count by taxi dropoff zone}
 \end{figure}
 
@@ -728,7 +732,7 @@ pick up map.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/destinationTipMap.jpg}
-\caption{\label{fig:org015c549}
+\caption{\label{fig:org38fb0c4}
 Median tip by taxi dropoff zone}
 \end{figure}
 
@@ -781,16 +785,21 @@ ggsave(paste(plotsFolder, "pickupTipMap.jpg", sep = "/"), pickupTipMap)
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/pickupTipMap.jpg}
-\caption{\label{fig:orgf7a8b3d}
+\caption{\label{fig:org0de4c37}
 Median tip by taxi pickup zone}
 \end{figure}
 
 
 \section{Modelling tips}
-\label{sec:orgfec0cf1}
+\label{sec:orgb0bdedc}
+
+In this section I will build a model to predict the tip given
+for a taxi ride. The main objective of this model is to give
+users a recommendation based on what amount to tip, based on
+what clients with similar ride characteristics tipped
 
 \subsection{A note on accuracy metrics}
-\label{sec:org5f5aba7}
+\label{sec:org633cb90}
 Both the root mean squared error (RMSE) and mean absolute precentage
 error (MAPE) are used to evaluate the models.
 For all the presented models, RMSE ranges between \$1.25 and \$1.4, while
@@ -808,7 +817,7 @@ interesting. As such, models will be evaluated plotting the distributions of the
 actual data as well as the predictions given by the model.
 
 \subsection{Linear models}
-\label{sec:org529f493}
+\label{sec:orgcfea1f5}
 \begin{verbatim}
 library(tidyverse)
 library(reshape2)
@@ -986,7 +995,7 @@ this variables are effecting the model.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/evaluation0PosteriorPredictive.jpg}
-\caption{\label{fig:org0bfb122}
+\caption{\label{fig:orgbf15125}
 Posterior predictive evaluation}
 \end{figure}
 
@@ -1008,7 +1017,7 @@ as well as the left tail.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/evaluation1PosteriorPredictive.jpg}
-\caption{\label{fig:orge2c38e9}
+\caption{\label{fig:org7f87f81}
 Posterior predictive evaluation}
 \end{figure}
 
@@ -1029,7 +1038,7 @@ actually implement in a production evironment.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/evaluation2PosteriorPredictive.jpg}
-\caption{\label{fig:org15f8343}
+\caption{\label{fig:org0c33e25}
 Posterior predictive evaluation}
 \end{figure}
 
@@ -1039,7 +1048,7 @@ regularization. this model fits the data quite poorly.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/evaluation3PosteriorPredictive.jpg}
-\caption{\label{fig:org01709c2}
+\caption{\label{fig:orgff972ec}
 Posterior predictive evaluation}
 \end{figure}
 
@@ -1054,20 +1063,20 @@ to better approximate the spikyness of the data.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/evaluation4PosteriorPredictive.jpg}
-\caption{\label{fig:orga831bca}
+\caption{\label{fig:org8872adb}
 Posterior predictive evaluation}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/evaluation5PosteriorPredictive.jpg}
-\caption{\label{fig:orge13f084}
+\caption{\label{fig:org9b8f82e}
 Posterior predictive evaluation}
 \end{figure}
 
 
 \subsection{Random forest}
-\label{sec:org4768447}
+\label{sec:org892cd8a}
 \begin{verbatim}
 library(tidyverse)
 library(reshape2)
@@ -1172,28 +1181,28 @@ and when the mode is nicely approximated, these the tail is underfitted.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/rfNodesize10000Maxnode100PosteriorPredictive.jpg}
-\caption{\label{fig:org5886c5b}
+\caption{\label{fig:org51b587d}
 Posterior predictive evaluation with 100 nodes of size 10000}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/rfNodesize110000Maxnode30PosteriorPredictive.jpg}
-\caption{\label{fig:org79ae7b8}
+\caption{\label{fig:orgad93f36}
 Posterior predictive evaluation with 30 nodes of size 110000}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/rfNodesize1e+05Maxnode70PosteriorPredictive.jpg}
-\caption{\label{fig:org3f746af}
+\caption{\label{fig:org9b78f88}
 Posterior predictive evaluation with 70 nodes of size 150000}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{./plots/rfNodesize110000Maxnode50PosteriorPredictive.jpg}
-\caption{\label{fig:org6f5542f}
+\caption{\label{fig:orgdc0aa35}
 Posterior predictive evaluation with 50 nodes of size 11000}
 \end{figure}
 
@@ -1202,7 +1211,7 @@ Posterior predictive evaluation with 50 nodes of size 11000}
 
 
 \subsection{Choosing a model}
-\label{sec:org23b73d9}
+\label{sec:org5c42c4c}
 Even though, the better accuracy metrics were obtained in some of the
 random forest, i would choose the weighted mixed linear model.
 The main reason is because the posterior predictive distribution
@@ -1244,7 +1253,7 @@ nicely fit the actual data.
 
 
 \subsection{How to implement as an API}
-\label{sec:org8f3237a}
+\label{sec:org942288b}
 In order to implement this model as an API, I think two components would
 be necessary:
 \begin{itemize}
